@@ -1,0 +1,90 @@
+﻿*, ::after, ::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+form.searchform-property {
+    padding: 19px 16px 10px 14px;
+    border-radius: 4px 4px 0px 0px;
+    position: relative;
+    -webkit-transition: 150ms;
+    transition: 150ms;
+    background-color: #00000099;
+}
+.form-control {
+    padding:5px 15px;    
+}
+.searchform {
+    position:relative;
+}
+.field-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.field-group .col-20 {
+        width: 20%;
+}
+    .field-group .input-form {
+        padding-right: calc(10px / 2);
+        padding-left: calc(10px / 2);
+        margin-bottom: 10px;
+    }
+form.searchform-property .form-control {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: #ffffff;
+    color: #373a3c;
+    padding: 5px 15px;
+}
+.field-group .col-15 {
+    width: 15%;
+}
+
+form.searchform-property .form-control {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: #ffffff;
+    color: #373a3c;
+    padding: 5px 15px;
+}
+
+.dropdown, .dropleft, .dropright, .dropup {
+    position: relative;
+}
+
+.form-control, .wpcf7 .wpcf7-validation-errors, .wpcf7 input[type=color], .wpcf7 input[type=date], .wpcf7 input[type=datetime-local], .wpcf7 input[type=datetime], .wpcf7 input[type=email], .wpcf7 input[type=file], .wpcf7 input[type=month], .wpcf7 input[type=number], .wpcf7 input[type=range], .wpcf7 input[type=search], .wpcf7 input[type=tel], .wpcf7 input[type=text], .wpcf7 input[type=time], .wpcf7 input[type=url], .wpcf7 input[type=week], .wpcf7 select, .wpcf7 textarea {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+}
+
+select {
+    word-wrap: normal;
+}
+button, select {
+    text-transform: none;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}   

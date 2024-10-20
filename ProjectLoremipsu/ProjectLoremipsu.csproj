@@ -176,7 +176,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\img1-1.jpg" />
+    <Content Include="Content\image\img1-2.jpg" />
+    <Content Include="Content\image\img1-3.jpg" />
+    <Content Include="Content\image\img1-4.jpg" />
     <Content Include="Content\mystyle\style-top-header.css" />
+    <Content Include="Content\mystyle\style-search-bar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -243,6 +248,10 @@
     <Content Include="Views\Shared\_PartialPageTopHeader.cshtml" />
     <Content Include="Views\Shared\_LayoutPageHome.cshtml" />
     <Content Include="Views\Home\TestHomepage.cshtml" />
+    <Content Include="Views\Shared\_LayoutContent.cshtml" />
+    <Content Include="Views\Home\TestContent.cshtml" />
+    <Content Include="Views\Shared\_LayoutForm.cshtml" />
+    <Content Include="Views\Home\TestForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\84989\\Downloads\\Compressed\\Loremipsum-website-homepage\\ProjectLoremipsu\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|c:\\users\\84989\\downloads\\compressed\\loremipsum-website-homepage\\projectloremipsu\\views\\shared\\_layoutpagehome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|solutionrelative:views\\shared\\_layoutpagehome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|C:\\Users\\84989\\Downloads\\Compressed\\Loremipsum-website-homepage\\ProjectLoremipsu\\content\\mystyle\\style-search-bar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|solutionrelative:content\\mystyle\\style-search-bar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|C:\\Users\\84989\\Downloads\\Compressed\\Loremipsum-website-homepage\\ProjectLoremipsu\\views\\home\\testhomepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|solutionrelative:views\\home\\testhomepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "style-search-bar.css",
+              "DocumentMoniker": "C:\\Users\\84989\\Downloads\\Compressed\\Loremipsum-website-homepage\\ProjectLoremipsu\\Content\\mystyle\\style-search-bar.css",
+              "RelativeDocumentMoniker": "Content\\mystyle\\style-search-bar.css",
+              "ToolTip": "C:\\Users\\84989\\Downloads\\Compressed\\Loremipsum-website-homepage\\ProjectLoremipsu\\Content\\mystyle\\style-search-bar.css",
+              "RelativeToolTip": "Content\\mystyle\\style-search-bar.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-10-16T07:07:18.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_LayoutPageHome.cshtml",
+              "DocumentMoniker": "C:\\Users\\84989\\Downloads\\Compressed\\Loremipsum-website-homepage\\ProjectLoremipsu\\Views\\Shared\\_LayoutPageHome.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_LayoutPageHome.cshtml",
+              "ToolTip": "C:\\Users\\84989\\Downloads\\Compressed\\Loremipsum-website-homepage\\ProjectLoremipsu\\Views\\Shared\\_LayoutPageHome.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_LayoutPageHome.cshtml",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAAHYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-16T07:06:44.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TestHomepage.cshtml",
+              "DocumentMoniker": "C:\\Users\\84989\\Downloads\\Compressed\\Loremipsum-website-homepage\\ProjectLoremipsu\\Views\\Home\\TestHomepage.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\TestHomepage.cshtml",
+              "ToolTip": "C:\\Users\\84989\\Downloads\\Compressed\\Loremipsum-website-homepage\\ProjectLoremipsu\\Views\\Home\\TestHomepage.cshtml",
+              "RelativeToolTip": "Views\\Home\\TestHomepage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-16T07:06:35.564Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

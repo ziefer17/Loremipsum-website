@@ -8,6 +8,14 @@ namespace ProjectLoremipsu.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult TestForm()
+        {
+            return View();
+        }
+        public ActionResult TestContent()
+        {
+            return View();
+        }
         public ActionResult TestHomepage()
         {
             return View();
