@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\VICTUS\\Desktop\\project\\Loremipsum-website\\ProjectLoremipsu\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|C:\\Users\\VICTUS\\Desktop\\project\\Loremipsum-website\\ProjectLoremipsu\\views\\shared\\_layoutpagehome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|c:\\users\\victus\\desktop\\project\\loremipsum-website\\projectloremipsu\\views\\shared\\_layoutcontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|solutionrelative:views\\shared\\_layoutcontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|c:\\users\\victus\\desktop\\project\\loremipsum-website\\projectloremipsu\\views\\shared\\_layoutpagehome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|solutionrelative:views\\shared\\_layoutpagehome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|c:\\users\\victus\\desktop\\project\\loremipsum-website\\projectloremipsu\\views\\home\\testhomepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|C:\\Users\\VICTUS\\Desktop\\project\\Loremipsum-website\\ProjectLoremipsu\\views\\home\\testhomepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B2447067-00AC-4690-859C-695EA24B091D}|ProjectLoremipsu.csproj|solutionrelative:views\\home\\testhomepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -22,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "_LayoutContent.cshtml",
+              "DocumentMoniker": "C:\\Users\\VICTUS\\Desktop\\project\\Loremipsum-website\\ProjectLoremipsu\\Views\\Shared\\_LayoutContent.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_LayoutContent.cshtml",
+              "ToolTip": "C:\\Users\\VICTUS\\Desktop\\project\\Loremipsum-website\\ProjectLoremipsu\\Views\\Shared\\_LayoutContent.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_LayoutContent.cshtml",
+              "ViewState": "AgIAAAMBAAAAAAAAAAAAwCUBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-02T04:27:02.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "style-search-bar.css",
               "DocumentMoniker": "C:\\Users\\VICTUS\\Desktop\\project\\Loremipsum-website\\ProjectLoremipsu\\Content\\mystyle\\style-search-bar.css",
               "RelativeDocumentMoniker": "Content\\mystyle\\style-search-bar.css",
@@ -38,20 +55,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "_LayoutPageHome.cshtml",
               "DocumentMoniker": "C:\\Users\\VICTUS\\Desktop\\project\\Loremipsum-website\\ProjectLoremipsu\\Views\\Shared\\_LayoutPageHome.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_LayoutPageHome.cshtml",
               "ToolTip": "C:\\Users\\VICTUS\\Desktop\\project\\Loremipsum-website\\ProjectLoremipsu\\Views\\Shared\\_LayoutPageHome.cshtml",
               "RelativeToolTip": "Views\\Shared\\_LayoutPageHome.cshtml",
-              "ViewState": "AgIAAKQBAAAAAAAAAAAAAKoBAABdAAAAAAAAAA==",
+              "ViewState": "AgIAAPIBAAAAAAAAAAAAAKoBAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-16T07:06:44.476Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "TestHomepage.cshtml",
               "DocumentMoniker": "C:\\Users\\VICTUS\\Desktop\\project\\Loremipsum-website\\ProjectLoremipsu\\Views\\Home\\TestHomepage.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\TestHomepage.cshtml",
@@ -59,8 +76,7 @@
               "RelativeToolTip": "Views\\Home\\TestHomepage.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-16T07:06:35.564Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-16T07:06:35.564Z"
             }
           ]
         }
