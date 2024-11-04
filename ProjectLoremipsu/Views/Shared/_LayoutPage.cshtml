@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>@Html.Partial("_PartialPageTopHeader")</div>
+    <div>
+        @RenderBody()
+
+    </div>
+    <!--footer start-->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="hm-footer-copyright">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p>
+                            &copy;Huflit 2024: <a href="https://github.com/ziefer17/Loremipsum-website">website project</a>website project by Duong The Hiep, Trieu Quoc Vinh, Pham Viet Tang, Pham Vu Hoang Tan, Nguyen Hai Nam
+                        </p>
+                        <p>
+                            &copy;Credit: Template by <a href="https://www.free-css.com/free-css-templates/page296/listrace">free-css.com</a>
+                        </p><!--/p-->
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="footer-social">
+
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!--/.hm-footer-copyright-->
+        </div><!--/.container-->
+
+        <div id="scroll-Top">
+            <div class="return-to-top">
+                <i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+            </div>
+
+        </div><!--/.scroll-Top-->
+
+    </footer><!--/.footer-->
+</body>
+</html>

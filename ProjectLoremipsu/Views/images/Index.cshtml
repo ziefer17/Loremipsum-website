@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ProjectLoremipsu.Models.image>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <div class="columns">
+        <div class="item">
+            <div>
+                <img src="@Url.Content(item.img1)" class="fm-img" />
+            </div>
+            <div>
+                <h1><a href="">@Html.DisplayFor(modelItem => item.property.address)</a></h1>
+                <p style="color:aqua">@Html.ActionLink("Details", "Details", "properties", new { id = item.property_id }, null)</p>
+                <ul>
+                    <li>@Html.DisplayFor(modelItem => item.property.num_bedrooms) <i class="fa fa-fw fa-bed"></i></li>
+                    <li>@Html.DisplayFor(modelItem => item.property.num_bathrooms) <i class="fa fa-fw fa-bath"></i></li>
+                    <li>@Html.DisplayFor(modelItem => item.property.num_carspaces) Chỗ để xe</li>
+                </ul>
+                <p class="price">$@Html.DisplayFor(modelItem => item.property.price)</p>
+            </div>
+        </div>
+    </div>
+}
+

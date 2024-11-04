@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLBDSModelStoreContainer" CdmEntityContainer="QLBDSEntities">
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="QLBDSModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="QLBDSModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="features">
+      <EntityTypeMapping TypeName="QLBDSModel.feature">
+        <MappingFragment StoreEntitySet="feature">
+          <ScalarProperty Name="feature_id" ColumnName="feature_id" />
+          <ScalarProperty Name="feature_name" ColumnName="feature_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="images">
+      <EntityTypeMapping TypeName="QLBDSModel.image">
+        <MappingFragment StoreEntitySet="image">
+          <ScalarProperty Name="img_id" ColumnName="img_id" />
+          <ScalarProperty Name="img1" ColumnName="img1" />
+          <ScalarProperty Name="img2" ColumnName="img2" />
+          <ScalarProperty Name="img3" ColumnName="img3" />
+          <ScalarProperty Name="img4" ColumnName="img4" />
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="listing_type">
+      <EntityTypeMapping TypeName="QLBDSModel.listing_type">
+        <MappingFragment StoreEntitySet="listing_type">
+          <ScalarProperty Name="listing_id" ColumnName="listing_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="properties">
+      <EntityTypeMapping TypeName="QLBDSModel.property">
+        <MappingFragment StoreEntitySet="property">
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="property_size" ColumnName="property_size" />
+          <ScalarProperty Name="num_bedrooms" ColumnName="num_bedrooms" />
+          <ScalarProperty Name="num_bathrooms" ColumnName="num_bathrooms" />
+          <ScalarProperty Name="num_carspaces" ColumnName="num_carspaces" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="listing_id" ColumnName="listing_id" />
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="property_employee">
+      <EntityTypeMapping TypeName="QLBDSModel.property_employee">
+        <MappingFragment StoreEntitySet="property_employee">
+          <ScalarProperty Name="idPE" ColumnName="idPE" />
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="property_feature">
+      <EntityTypeMapping TypeName="QLBDSModel.property_feature">
+        <MappingFragment StoreEntitySet="property_feature">
+          <ScalarProperty Name="idPF" ColumnName="idPF" />
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+          <ScalarProperty Name="feature_id" ColumnName="feature_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="property_location">
+      <EntityTypeMapping TypeName="QLBDSModel.property_location">
+        <MappingFragment StoreEntitySet="property_location">
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="property_status">
+      <EntityTypeMapping TypeName="QLBDSModel.property_status">
+        <MappingFragment StoreEntitySet="property_status">
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="property_type">
+      <EntityTypeMapping TypeName="QLBDSModel.property_type">
+        <MappingFragment StoreEntitySet="property_type">
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reviews">
+      <EntityTypeMapping TypeName="QLBDSModel.review">
+        <MappingFragment StoreEntitySet="review">
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="QLBDSModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

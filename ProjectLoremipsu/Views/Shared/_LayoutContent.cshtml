@@ -64,19 +64,92 @@
         .w3-main {
             background-color: #e3f6f5;
         }
+
+        .comment-section {
+            background-color: #fff;
+            padding: 20px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .rating {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .comment-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .comment {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .comment h4 {
+            margin: 0;
+            color: #555;
+        }
+
+        .comment p {
+            margin: 5px 0 0 0;
+            color: #777;
+        }
+
+        .stars {
+            color: #FFD700;
+        }
     </style>
 </head>
 <body>
     <div>@Html.Partial("_PartialPageTopHeader")</div>
-    <section class="w3-content w3-border-left w3-border-right">
+    <div>
+        @RenderBody()
+    </div>
+    <!--<section class="w3-content w3-border-left w3-border-right">-->
         <!-- !PAGE CONTENT! -->
-        <div class="w3-main">
-            <hr>
+        <!--<div class="w3-main">
+            <hr>-->
             <!-- Push down content on small screens -->
-            <div class="w3-hide-large" style="margin-top:80px"></div>
+            <!--<div class="w3-hide-large" style="margin-top:80px"></div>-->
 
             <!-- Slideshow Header -->
-            <div class="w3-container" id="apartment">
+            <!--<div class="w3-container" id="apartment">
                 <h2 class="w3-text-green">The Apartment</h2>
                 <div class="w3-display-container mySlides">
                     <img src="~/Content/image/img1-1.jpg" style="width:100%;margin-bottom:-6px">
@@ -110,7 +183,7 @@
                 <h4><strong>The space</strong></h4>
                 <div class="w3-row w3-large">
                     <div class="w3-col s6">
-                        <p><i class="fa fa-fw fa-male"></i> Chỗ để xe: 4</p>
+                        <p><i class="fa-solid fa-car-side"></i> Chỗ để xe: 4</p>
                         <p><i class="fa fa-fw fa-bath"></i> phòng tắm: 2</p>
                         <p><i class="fa fa-fw fa-bed"></i> phòng ngủ: 1</p>
                     </div>
@@ -135,19 +208,73 @@
                 <h4><strong>Extra Info</strong></h4>
                 <p>Our apartment is really clean and we like to keep it that way. Enjoy the lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <h2><b>Price: 5 000 000</b></h2>
-                <hr>
+                <hr>-->
 
                 <!-- Contact -->
-                <div class="w3-container" id="contact">
+                <!--<div class="w3-container" id="contact">
                     <h2>Contact</h2>
                     <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
                     <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
                     <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
                 </div>
+
+                <div class="comment-section">
+                    <h2>Bình luận và Đánh giá</h2>
+
+                    <div class="rating">
+                        <label for="rating">Đánh giá:</label>
+                        <select id="rating" name="rating">
+                            <option value="1">1 sao</option>
+                            <option value="2">2 sao</option>
+                            <option value="3">3 sao</option>
+                            <option value="4">4 sao</option>
+                            <option value="5">5 sao</option>
+                        </select>
+                    </div>
+
+                    <div class="comment-box">
+                        <textarea id="comment" placeholder="Nhập bình luận của bạn ở đây..." required></textarea>
+                        <button class="welcome-hero-btn" style="height: 34px; width:30px; margin-top: 20px;" onclick="submitComment()">Gửi</button>
+                    </div>
+
+                    <div id="comment-list">-->
+                        <!-- Các bình luận sẽ được hiển thị ở đây -->
+                    <!--</div>
+
+                </div>
+
             </div>
         </div>
     </section>
     <script>
+        function submitComment() {
+            const commentText = document.getElementById("comment").value;
+            const rating = document.getElementById("rating").value;
+
+            if (commentText === "") {
+                alert("Vui lòng nhập bình luận trước khi gửi.");
+                return;
+            }
+
+            const commentList = document.getElementById("comment-list");
+
+            const commentElement = document.createElement("div");
+            commentElement.classList.add("comment");
+
+            const ratingElement = document.createElement("h4");
+            ratingElement.classList.add("stars");
+            ratingElement.innerHTML = "Đánh giá: " + "★".repeat(rating);
+            commentElement.appendChild(ratingElement);
+
+            const textElement = document.createElement("p");
+            textElement.innerText = commentText;
+            commentElement.appendChild(textElement);
+
+            commentList.insertBefore(commentElement, commentList.firstChild);
+
+            document.getElementById("comment").value = "";
+            document.getElementById("rating").value = "1";
+        }
         // Script to open and close sidebar when on tablets and phones
         function w3_open() {
             document.getElementById("mySidebar").style.display = "block";
@@ -186,11 +313,9 @@
             x[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " w3-opacity-off";
         }
-    </script>
+    </script>-->
 
-    <div>
-        @RenderBody()
-    </div>
+
 
     <!-- Include all js compiled plugins (below), or include individual files as needed -->
 

@@ -1,0 +1,299 @@
+﻿@model ProjectLoremipsu.Models.property
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+
+
+<section class="w3-content w3-border-left w3-border-right">
+    <!-- !PAGE CONTENT! -->
+    <button class="welcome-hero-btn box-header">@Html.ActionLink("Trở về", "Index", "images")</button>
+    <div class="w3-main">
+        <hr>
+        <!-- Push down content on small screens -->
+        <div class="w3-hide-large" style="margin-top:80px"></div>
+
+        <!-- Slideshow Header -->
+        <div class="w3-container" id="apartment">
+            <h2 class="w3-text-green">@Html.DisplayFor(model => model.address)</h2>
+            <div class="w3-display-container mySlides">
+                <img src="~/Content/image/img1-1.jpg" style="width:100%;margin-bottom:-6px">
+            </div>
+            <div class="w3-display-container mySlides">
+                <img src="~/Content/image/img1-2.jpg" style="width:100%;margin-bottom:-6px">
+            </div>
+            <div class="w3-display-container mySlides">
+                <img src="~/Content/image/img1-3.jpg" style="width:100%;margin-bottom:-6px">
+            </div>
+            <div class="w3-display-container mySlides">
+                <img src="~/Content/image/img1-4.jpg" style="width:100%;margin-bottom:-6px">
+            </div>
+        </div>
+        <div class="w3-row-padding w3-section">
+            <div class="w3-col s3">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-1.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Living room">
+            </div>
+            <div class="w3-col s3">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-2.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Dining room">
+            </div>
+            <div class="w3-col s3">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-3.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Bedroom">
+            </div>
+            <div class="w3-col s3">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-4.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
+            </div>
+        </div>
+
+        <div class="w3-container">
+            <h4><strong>@Html.DisplayFor(model => model.property_location.description)</strong></h4>
+            <div class="w3-row w3-large">
+                <div class="w3-col s6">
+                    <p><i class="fa-solid fa-car-side"></i> Chỗ để xe: @Html.DisplayFor(model => model.num_carspaces)</p>
+                    <p><i class="fa fa-fw fa-bath"></i> phòng tắm: @Html.DisplayFor(model => model.num_bathrooms)</p>
+                    <p><i class="fa fa-fw fa-bed"></i> phòng ngủ: @Html.DisplayFor(model => model.num_bedrooms)</p>
+                </div>
+            </div>
+            <hr>
+
+            <h4><strong>Thành phần</strong></h4>
+            <div class="w3-row w3-large">
+                <div class="w3-col s6">
+                    <p>Nhà để xe</p>
+                    <p>WiFi</p>
+                    <p>TV</p>
+                </div>
+                <div class="w3-col s6">
+                    <p>Nhà bếp</p>
+                    <p>Điều hòa</p>
+                    <p>Phù hợp với xe lăng</p>
+                </div>
+            </div>
+            <hr>
+
+            <h4><strong>Thông tin chi tiết:</strong></h4>
+            <p>@Html.DisplayFor(model => model.description)</p>
+            <h2><b>Giá cả: @Html.DisplayFor(model => model.price)</b></h2>
+            <hr>
+
+            <!-- Contact -->
+            <div class="w3-container" id="contact">
+                <h2>Contact</h2>
+                <i class="fa fa-map-marker" style="width:30px"></i> VN, tp. Ho Chi Minh<br>
+                <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
+                <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+            </div>
+
+            <div class="comment-section">
+                <h2>Bình luận và Đánh giá</h2>
+
+                <div class="rating">
+                    <label for="rating">Đánh giá:</label>
+                    <select id="rating" name="rating">
+                        <option value="1">1 sao</option>
+                        <option value="2">2 sao</option>
+                        <option value="3">3 sao</option>
+                        <option value="4">4 sao</option>
+                        <option value="5">5 sao</option>
+                    </select>
+                </div>
+
+                <div class="comment-box">
+                    <textarea id="comment" placeholder="Nhập bình luận của bạn ở đây..." required></textarea>
+                    <button class="welcome-hero-btn" style="height: 34px; width:30px; margin-top: 20px;" onclick="submitComment()">Gửi</button>
+                </div>
+
+                <div id="comment-list">
+                    <!-- Các bình luận sẽ được hiển thị ở đây -->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<script>
+        function submitComment() {
+            const commentText = document.getElementById("comment").value;
+            const rating = document.getElementById("rating").value;
+
+            if (commentText === "") {
+                alert("Vui lòng nhập bình luận trước khi gửi.");
+                return;
+            }
+
+            const commentList = document.getElementById("comment-list");
+
+            const commentElement = document.createElement("div");
+            commentElement.classList.add("comment");
+
+            const ratingElement = document.createElement("h4");
+            ratingElement.classList.add("stars");
+            ratingElement.innerHTML = "Đánh giá: " + "★".repeat(rating);
+            commentElement.appendChild(ratingElement);
+
+            const textElement = document.createElement("p");
+            textElement.innerText = commentText;
+            commentElement.appendChild(textElement);
+
+            commentList.insertBefore(commentElement, commentList.firstChild);
+
+            document.getElementById("comment").value = "";
+            document.getElementById("rating").value = "1";
+        }
+        // Script to open and close sidebar when on tablets and phones
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Slideshow Apartment Images
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+            showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+            }
+            x[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " w3-opacity-off";
+        }
+</script>
+
+@*<h2>Details</h2>
+
+<div>
+    <h4>property</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.property_size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.property_size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.num_bedrooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_bedrooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.num_bathrooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_bathrooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.num_carspaces)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_carspaces)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.listing_type.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.listing_type.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.property_location.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.property_location.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.property_status.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.property_status.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.property_type.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.property_type.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.property_id }) |
+    @Html.ActionLink("Trở về", "Homepage")
+</p>*@

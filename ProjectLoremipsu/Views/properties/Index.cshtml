@@ -1,0 +1,106 @@
+﻿@model IEnumerable<ProjectLoremipsu.Models.property>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.created_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.property_size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_bedrooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_bathrooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_carspaces)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.listing_type.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.property_location.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.property_status.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.property_type.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.created_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.property_size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_bedrooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_bathrooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_carspaces)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.listing_type.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.property_location.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.property_status.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.property_type.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.property_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.property_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.property_id })
+        </td>
+    </tr>
+}
+
+</table>

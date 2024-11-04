@@ -1,0 +1,859 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLBDSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="role" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="employee_id" />
+          </Key>
+          <Property Name="employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="feature">
+          <Key>
+            <PropertyRef Name="feature_id" />
+          </Key>
+          <Property Name="feature_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="feature_name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="img_id" />
+          </Key>
+          <Property Name="img_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="img1" Type="nvarchar(max)" />
+          <Property Name="img2" Type="nvarchar(max)" />
+          <Property Name="img3" Type="nvarchar(max)" />
+          <Property Name="img4" Type="nvarchar(max)" />
+          <Property Name="property_id" Type="int" />
+        </EntityType>
+        <EntityType Name="listing_type">
+          <Key>
+            <PropertyRef Name="listing_id" />
+          </Key>
+          <Property Name="listing_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="property">
+          <Key>
+            <PropertyRef Name="property_id" />
+          </Key>
+          <Property Name="property_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="text" />
+          <Property Name="created_date" Type="date" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="property_size" Type="int" />
+          <Property Name="num_bedrooms" Type="int" />
+          <Property Name="num_bathrooms" Type="int" />
+          <Property Name="num_carspaces" Type="int" />
+          <Property Name="price" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="type_id" Type="int" />
+          <Property Name="listing_id" Type="int" />
+          <Property Name="location_id" Type="int" />
+        </EntityType>
+        <EntityType Name="property_employee">
+          <Key>
+            <PropertyRef Name="idPE" />
+          </Key>
+          <Property Name="idPE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="property_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="property_feature">
+          <Key>
+            <PropertyRef Name="idPF" />
+          </Key>
+          <Property Name="idPF" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="property_id" Type="int" Nullable="false" />
+          <Property Name="feature_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="property_location">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="property_status">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="property_type">
+          <Key>
+            <PropertyRef Name="type_id" />
+          </Key>
+          <Property Name="type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="review">
+          <Key>
+            <PropertyRef Name="review_id" />
+          </Key>
+          <Property Name="review_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="text" />
+          <Property Name="score" Type="int" />
+          <Property Name="created_date" Type="date" />
+          <Property Name="property_id" Type="int" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar(max)" />
+          <Property Name="created_date" Type="date" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="role" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__image__property___4D94879B">
+          <End Role="property" Type="Self.property" Multiplicity="0..1" />
+          <End Role="image" Type="Self.image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property">
+              <PropertyRef Name="property_id" />
+            </Principal>
+            <Dependent Role="image">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property___emplo__5535A963">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="property_employee" Type="Self.property_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="property_employee">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property___featu__59063A47">
+          <End Role="feature" Type="Self.feature" Multiplicity="1" />
+          <End Role="property_feature" Type="Self.property_feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="feature">
+              <PropertyRef Name="feature_id" />
+            </Principal>
+            <Dependent Role="property_feature">
+              <PropertyRef Name="feature_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property___prope__5441852A">
+          <End Role="property" Type="Self.property" Multiplicity="1" />
+          <End Role="property_employee" Type="Self.property_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property">
+              <PropertyRef Name="property_id" />
+            </Principal>
+            <Dependent Role="property_employee">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property___prope__5812160E">
+          <End Role="property" Type="Self.property" Multiplicity="1" />
+          <End Role="property_feature" Type="Self.property_feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property">
+              <PropertyRef Name="property_id" />
+            </Principal>
+            <Dependent Role="property_feature">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__listin__4AB81AF0">
+          <End Role="listing_type" Type="Self.listing_type" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="listing_type">
+              <PropertyRef Name="listing_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="listing_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__locati__49C3F6B7">
+          <End Role="property_location" Type="Self.property_location" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property_location">
+              <PropertyRef Name="location_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__status__47DBAE45">
+          <End Role="property_status" Type="Self.property_status" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property_status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__type_i__48CFD27E">
+          <End Role="property_type" Type="Self.property_type" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property_type">
+              <PropertyRef Name="type_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__user_i__46E78A0C">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__review__property__5070F446">
+          <End Role="property" Type="Self.property" Multiplicity="0..1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property">
+              <PropertyRef Name="property_id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__review__user_id__5165187F">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLBDSModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="feature" EntityType="Self.feature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="image" EntityType="Self.image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="listing_type" EntityType="Self.listing_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="property" EntityType="Self.property" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="property_employee" EntityType="Self.property_employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="property_feature" EntityType="Self.property_feature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="property_location" EntityType="Self.property_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="property_status" EntityType="Self.property_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="property_type" EntityType="Self.property_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="review" EntityType="Self.review" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__image__property___4D94879B" Association="Self.FK__image__property___4D94879B">
+            <End Role="property" EntitySet="property" />
+            <End Role="image" EntitySet="image" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property___emplo__5535A963" Association="Self.FK__property___emplo__5535A963">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="property_employee" EntitySet="property_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property___featu__59063A47" Association="Self.FK__property___featu__59063A47">
+            <End Role="feature" EntitySet="feature" />
+            <End Role="property_feature" EntitySet="property_feature" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property___prope__5441852A" Association="Self.FK__property___prope__5441852A">
+            <End Role="property" EntitySet="property" />
+            <End Role="property_employee" EntitySet="property_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property___prope__5812160E" Association="Self.FK__property___prope__5812160E">
+            <End Role="property" EntitySet="property" />
+            <End Role="property_feature" EntitySet="property_feature" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__listin__4AB81AF0" Association="Self.FK__property__listin__4AB81AF0">
+            <End Role="listing_type" EntitySet="listing_type" />
+            <End Role="property" EntitySet="property" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__locati__49C3F6B7" Association="Self.FK__property__locati__49C3F6B7">
+            <End Role="property_location" EntitySet="property_location" />
+            <End Role="property" EntitySet="property" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__status__47DBAE45" Association="Self.FK__property__status__47DBAE45">
+            <End Role="property_status" EntitySet="property_status" />
+            <End Role="property" EntitySet="property" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__type_i__48CFD27E" Association="Self.FK__property__type_i__48CFD27E">
+            <End Role="property_type" EntitySet="property_type" />
+            <End Role="property" EntitySet="property" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__user_i__46E78A0C" Association="Self.FK__property__user_i__46E78A0C">
+            <End Role="users" EntitySet="users" />
+            <End Role="property" EntitySet="property" />
+          </AssociationSet>
+          <AssociationSet Name="FK__review__property__5070F446" Association="Self.FK__review__property__5070F446">
+            <End Role="property" EntitySet="property" />
+            <End Role="review" EntitySet="review" />
+          </AssociationSet>
+          <AssociationSet Name="FK__review__user_id__5165187F" Association="Self.FK__review__user_id__5165187F">
+            <End Role="users" EntitySet="users" />
+            <End Role="review" EntitySet="review" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLBDSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="employee_id" />
+          </Key>
+          <Property Name="employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="property_employee" Relationship="Self.FK__property___emplo__5535A963" FromRole="employee" ToRole="property_employee" />
+        </EntityType>
+        <EntityType Name="feature">
+          <Key>
+            <PropertyRef Name="feature_id" />
+          </Key>
+          <Property Name="feature_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="feature_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="property_feature" Relationship="Self.FK__property___featu__59063A47" FromRole="feature" ToRole="property_feature" />
+        </EntityType>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="img_id" />
+          </Key>
+          <Property Name="img_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="img1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="property_id" Type="Int32" />
+          <NavigationProperty Name="property" Relationship="Self.FK__image__property___4D94879B" FromRole="image" ToRole="property" />
+        </EntityType>
+        <EntityType Name="listing_type">
+          <Key>
+            <PropertyRef Name="listing_id" />
+          </Key>
+          <Property Name="listing_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="properties" Relationship="Self.FK__property__listin__4AB81AF0" FromRole="listing_type" ToRole="property" />
+        </EntityType>
+        <EntityType Name="property">
+          <Key>
+            <PropertyRef Name="property_id" />
+          </Key>
+          <Property Name="property_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Precision="0" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="property_size" Type="Int32" />
+          <Property Name="num_bedrooms" Type="Int32" />
+          <Property Name="num_bathrooms" Type="Int32" />
+          <Property Name="num_carspaces" Type="Int32" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="type_id" Type="Int32" />
+          <Property Name="listing_id" Type="Int32" />
+          <Property Name="location_id" Type="Int32" />
+          <NavigationProperty Name="images" Relationship="Self.FK__image__property___4D94879B" FromRole="property" ToRole="image" />
+          <NavigationProperty Name="listing_type" Relationship="Self.FK__property__listin__4AB81AF0" FromRole="property" ToRole="listing_type" />
+          <NavigationProperty Name="property_employee" Relationship="Self.FK__property___prope__5441852A" FromRole="property" ToRole="property_employee" />
+          <NavigationProperty Name="property_feature" Relationship="Self.FK__property___prope__5812160E" FromRole="property" ToRole="property_feature" />
+          <NavigationProperty Name="property_location" Relationship="Self.FK__property__locati__49C3F6B7" FromRole="property" ToRole="property_location" />
+          <NavigationProperty Name="property_status" Relationship="Self.FK__property__status__47DBAE45" FromRole="property" ToRole="property_status" />
+          <NavigationProperty Name="property_type" Relationship="Self.FK__property__type_i__48CFD27E" FromRole="property" ToRole="property_type" />
+          <NavigationProperty Name="user" Relationship="Self.FK__property__user_i__46E78A0C" FromRole="property" ToRole="users" />
+          <NavigationProperty Name="reviews" Relationship="Self.FK__review__property__5070F446" FromRole="property" ToRole="review" />
+        </EntityType>
+        <EntityType Name="property_employee">
+          <Key>
+            <PropertyRef Name="idPE" />
+          </Key>
+          <Property Name="idPE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="property_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="Self.FK__property___emplo__5535A963" FromRole="property_employee" ToRole="employee" />
+          <NavigationProperty Name="property" Relationship="Self.FK__property___prope__5441852A" FromRole="property_employee" ToRole="property" />
+        </EntityType>
+        <EntityType Name="property_feature">
+          <Key>
+            <PropertyRef Name="idPF" />
+          </Key>
+          <Property Name="idPF" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="property_id" Type="Int32" Nullable="false" />
+          <Property Name="feature_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="feature" Relationship="Self.FK__property___featu__59063A47" FromRole="property_feature" ToRole="feature" />
+          <NavigationProperty Name="property" Relationship="Self.FK__property___prope__5812160E" FromRole="property_feature" ToRole="property" />
+        </EntityType>
+        <EntityType Name="property_location">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="properties" Relationship="Self.FK__property__locati__49C3F6B7" FromRole="property_location" ToRole="property" />
+        </EntityType>
+        <EntityType Name="property_status">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="properties" Relationship="Self.FK__property__status__47DBAE45" FromRole="property_status" ToRole="property" />
+        </EntityType>
+        <EntityType Name="property_type">
+          <Key>
+            <PropertyRef Name="type_id" />
+          </Key>
+          <Property Name="type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="properties" Relationship="Self.FK__property__type_i__48CFD27E" FromRole="property_type" ToRole="property" />
+        </EntityType>
+        <EntityType Name="review">
+          <Key>
+            <PropertyRef Name="review_id" />
+          </Key>
+          <Property Name="review_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="score" Type="Int32" />
+          <Property Name="created_date" Type="DateTime" Precision="0" />
+          <Property Name="property_id" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <NavigationProperty Name="property" Relationship="Self.FK__review__property__5070F446" FromRole="review" ToRole="property" />
+          <NavigationProperty Name="user" Relationship="Self.FK__review__user_id__5165187F" FromRole="review" ToRole="users" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="DateTime" Precision="0" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="properties" Relationship="Self.FK__property__user_i__46E78A0C" FromRole="users" ToRole="property" />
+          <NavigationProperty Name="reviews" Relationship="Self.FK__review__user_id__5165187F" FromRole="users" ToRole="review" />
+        </EntityType>
+        <Association Name="FK__property___emplo__5535A963">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="property_employee" Type="Self.property_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="property_employee">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property___featu__59063A47">
+          <End Role="feature" Type="Self.feature" Multiplicity="1" />
+          <End Role="property_feature" Type="Self.property_feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="feature">
+              <PropertyRef Name="feature_id" />
+            </Principal>
+            <Dependent Role="property_feature">
+              <PropertyRef Name="feature_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__image__property___4D94879B">
+          <End Role="property" Type="Self.property" Multiplicity="0..1" />
+          <End Role="image" Type="Self.image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property">
+              <PropertyRef Name="property_id" />
+            </Principal>
+            <Dependent Role="image">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__listin__4AB81AF0">
+          <End Role="listing_type" Type="Self.listing_type" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="listing_type">
+              <PropertyRef Name="listing_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="listing_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property___prope__5441852A">
+          <End Role="property" Type="Self.property" Multiplicity="1" />
+          <End Role="property_employee" Type="Self.property_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property">
+              <PropertyRef Name="property_id" />
+            </Principal>
+            <Dependent Role="property_employee">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property___prope__5812160E">
+          <End Role="property" Type="Self.property" Multiplicity="1" />
+          <End Role="property_feature" Type="Self.property_feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property">
+              <PropertyRef Name="property_id" />
+            </Principal>
+            <Dependent Role="property_feature">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__locati__49C3F6B7">
+          <End Role="property_location" Type="Self.property_location" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property_location">
+              <PropertyRef Name="location_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__status__47DBAE45">
+          <End Role="property_status" Type="Self.property_status" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property_status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__type_i__48CFD27E">
+          <End Role="property_type" Type="Self.property_type" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property_type">
+              <PropertyRef Name="type_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__property__user_i__46E78A0C">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="property" Type="Self.property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__review__property__5070F446">
+          <End Role="property" Type="Self.property" Multiplicity="0..1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property">
+              <PropertyRef Name="property_id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__review__user_id__5165187F">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLBDSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="features" EntityType="Self.feature" />
+          <EntitySet Name="images" EntityType="Self.image" />
+          <EntitySet Name="listing_type" EntityType="Self.listing_type" />
+          <EntitySet Name="properties" EntityType="Self.property" />
+          <EntitySet Name="property_employee" EntityType="Self.property_employee" />
+          <EntitySet Name="property_feature" EntityType="Self.property_feature" />
+          <EntitySet Name="property_location" EntityType="Self.property_location" />
+          <EntitySet Name="property_status" EntityType="Self.property_status" />
+          <EntitySet Name="property_type" EntityType="Self.property_type" />
+          <EntitySet Name="reviews" EntityType="Self.review" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK__property___emplo__5535A963" Association="Self.FK__property___emplo__5535A963">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="property_employee" EntitySet="property_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property___featu__59063A47" Association="Self.FK__property___featu__59063A47">
+            <End Role="feature" EntitySet="features" />
+            <End Role="property_feature" EntitySet="property_feature" />
+          </AssociationSet>
+          <AssociationSet Name="FK__image__property___4D94879B" Association="Self.FK__image__property___4D94879B">
+            <End Role="property" EntitySet="properties" />
+            <End Role="image" EntitySet="images" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__listin__4AB81AF0" Association="Self.FK__property__listin__4AB81AF0">
+            <End Role="listing_type" EntitySet="listing_type" />
+            <End Role="property" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property___prope__5441852A" Association="Self.FK__property___prope__5441852A">
+            <End Role="property" EntitySet="properties" />
+            <End Role="property_employee" EntitySet="property_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property___prope__5812160E" Association="Self.FK__property___prope__5812160E">
+            <End Role="property" EntitySet="properties" />
+            <End Role="property_feature" EntitySet="property_feature" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__locati__49C3F6B7" Association="Self.FK__property__locati__49C3F6B7">
+            <End Role="property_location" EntitySet="property_location" />
+            <End Role="property" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__status__47DBAE45" Association="Self.FK__property__status__47DBAE45">
+            <End Role="property_status" EntitySet="property_status" />
+            <End Role="property" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__type_i__48CFD27E" Association="Self.FK__property__type_i__48CFD27E">
+            <End Role="property_type" EntitySet="property_type" />
+            <End Role="property" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__property__user_i__46E78A0C" Association="Self.FK__property__user_i__46E78A0C">
+            <End Role="users" EntitySet="users" />
+            <End Role="property" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__review__property__5070F446" Association="Self.FK__review__property__5070F446">
+            <End Role="property" EntitySet="properties" />
+            <End Role="review" EntitySet="reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__review__user_id__5165187F" Association="Self.FK__review__user_id__5165187F">
+            <End Role="users" EntitySet="users" />
+            <End Role="review" EntitySet="reviews" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLBDSModelStoreContainer" CdmEntityContainer="QLBDSEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="QLBDSModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="QLBDSModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="features">
+            <EntityTypeMapping TypeName="QLBDSModel.feature">
+              <MappingFragment StoreEntitySet="feature">
+                <ScalarProperty Name="feature_id" ColumnName="feature_id" />
+                <ScalarProperty Name="feature_name" ColumnName="feature_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="images">
+            <EntityTypeMapping TypeName="QLBDSModel.image">
+              <MappingFragment StoreEntitySet="image">
+                <ScalarProperty Name="img_id" ColumnName="img_id" />
+                <ScalarProperty Name="img1" ColumnName="img1" />
+                <ScalarProperty Name="img2" ColumnName="img2" />
+                <ScalarProperty Name="img3" ColumnName="img3" />
+                <ScalarProperty Name="img4" ColumnName="img4" />
+                <ScalarProperty Name="property_id" ColumnName="property_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="listing_type">
+            <EntityTypeMapping TypeName="QLBDSModel.listing_type">
+              <MappingFragment StoreEntitySet="listing_type">
+                <ScalarProperty Name="listing_id" ColumnName="listing_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="properties">
+            <EntityTypeMapping TypeName="QLBDSModel.property">
+              <MappingFragment StoreEntitySet="property">
+                <ScalarProperty Name="property_id" ColumnName="property_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="property_size" ColumnName="property_size" />
+                <ScalarProperty Name="num_bedrooms" ColumnName="num_bedrooms" />
+                <ScalarProperty Name="num_bathrooms" ColumnName="num_bathrooms" />
+                <ScalarProperty Name="num_carspaces" ColumnName="num_carspaces" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="listing_id" ColumnName="listing_id" />
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="property_employee">
+            <EntityTypeMapping TypeName="QLBDSModel.property_employee">
+              <MappingFragment StoreEntitySet="property_employee">
+                <ScalarProperty Name="idPE" ColumnName="idPE" />
+                <ScalarProperty Name="property_id" ColumnName="property_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="property_feature">
+            <EntityTypeMapping TypeName="QLBDSModel.property_feature">
+              <MappingFragment StoreEntitySet="property_feature">
+                <ScalarProperty Name="idPF" ColumnName="idPF" />
+                <ScalarProperty Name="property_id" ColumnName="property_id" />
+                <ScalarProperty Name="feature_id" ColumnName="feature_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="property_location">
+            <EntityTypeMapping TypeName="QLBDSModel.property_location">
+              <MappingFragment StoreEntitySet="property_location">
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="property_status">
+            <EntityTypeMapping TypeName="QLBDSModel.property_status">
+              <MappingFragment StoreEntitySet="property_status">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="property_type">
+            <EntityTypeMapping TypeName="QLBDSModel.property_type">
+              <MappingFragment StoreEntitySet="property_type">
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reviews">
+            <EntityTypeMapping TypeName="QLBDSModel.review">
+              <MappingFragment StoreEntitySet="review">
+                <ScalarProperty Name="review_id" ColumnName="review_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="property_id" ColumnName="property_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="QLBDSModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
