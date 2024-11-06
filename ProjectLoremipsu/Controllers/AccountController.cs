@@ -17,6 +17,7 @@ namespace ProjectLoremipsu.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        QLBDSEntities NT = new QLBDSEntities();
 
         public AccountController()
         {
@@ -54,7 +55,8 @@ namespace ProjectLoremipsu.Controllers
 
         //
         // GET: /Account/Login
-        [AllowAnonymous]
+        [HttpGet]
+        [AllowAnonymous]        
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -66,29 +68,17 @@ namespace ProjectLoremipsu.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel l)
         {
-            if (!ModelState.IsValid)
+            var query = NT.users.SingleOrDefault(m => m.email == l.Email && m.password == l.Password);
+            if (query != null)
             {
-                return View(model);
+                Response.Write("<script>alert('Login Successful')<script>");
+                return RedirectToAction("HomePage", "Home");
             }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
-            }
+            else
+                Response.Write("<script>alert('Invalid Credentials')<script>");
+            return View();
         }
 
         //
@@ -144,32 +134,45 @@ namespace ProjectLoremipsu.Controllers
 
         //
         // POST: /Account/Register
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }        
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(user user)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                if (user.password != user.confirmPassword)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("confirmPassword", "Password does not match each other!");
                 }
-                AddErrors(result);
+                else
+                {
+                    user.user_id = new Random().Next();
+                    user.created_date = DateTime.Now;
+                    user.role = "User";
+        
+                    NT.users.Add(user);
+                    if (NT.users.Any(x => x.email == user.email))
+                    {
+                        ViewBag.Message = "Email already registered";
+                        return RedirectToAction("Login", "Account");
+                    }
+                    else
+                    {
+                        NT.users.Add(user);
+                        NT.SaveChanges();
+                        Response.Write("<script>alert('Registration Successful')<script>");
+                        return RedirectToAction("Login", "Account");
+                    }
+                }
             }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            return View();            
         }
 
         //
