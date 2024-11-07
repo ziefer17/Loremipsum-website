@@ -129,21 +129,22 @@ namespace ProjectLoremipsu.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(user user)
+        public ActionResult Register(user ur)
         {
             if (ModelState.IsValid)
             {
-                user.created_date = DateTime.Now;
-                user.role = "User";
+                ur.user_id = new Random().Next();
+                ur.created_date = DateTime.Now;
+                ur.role = "User";
                     NT.users.Add(user);
-                if (NT.users.Any(x => x.email == user.email))
+                if (NT.users.Any(x => x.email == ur.email))
                 {
                     ViewBag.Message = "Email already registered";
                     return RedirectToAction("Login", "Account");
                 }
                 else
                 {
-                    NT.users.Add(user);
+                    NT.users.Add(ur);
                     NT.SaveChanges();
                     Response.Write("<script>alert('Registration Successful')<script>");
                     return RedirectToAction("Login", "Account");
