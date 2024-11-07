@@ -17,7 +17,7 @@ namespace ProjectLoremipsu.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        QLBDSEntities NT = new QLBDSEntities();
         public AccountController()
         {
         }
@@ -51,21 +51,6 @@ namespace ProjectLoremipsu.Controllers
                 _userManager = value;
             }
         }
-
-        //
-        // GET: /Account/Login
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
-
-        //
-        // POST: /Account/Login
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         [AllowAnonymous]
         [HttpGet]
         public ActionResult Login()
@@ -135,14 +120,12 @@ namespace ProjectLoremipsu.Controllers
 
         //
         // GET: /Account/Register
-                [AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Register()
         {
             return View();
-        }
-        
-        
+        }        
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -150,37 +133,24 @@ namespace ProjectLoremipsu.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (user.password != user.confirmPassword)
+                user.created_date = DateTime.Now;
+                user.role = "User";
+                    NT.users.Add(user);
+                if (NT.users.Any(x => x.email == user.email))
                 {
-                    ModelState.AddModelError("confirmPassword", "Password does not match each other!");
+                    ViewBag.Message = "Email already registered";
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
-                    user.user_id = new Random().Next();
-                    user.created_date = DateTime.Now;
-                    user.role = "User";
-        
                     NT.users.Add(user);
-                    if (NT.users.Any(x => x.email == user.email))
-                    {
-                        ViewBag.Message = "Email already registered";
-                        return RedirectToAction("Login", "Account");
-                    }
-                    else
-                    {
-                        NT.users.Add(user);
-                        NT.SaveChanges();
-                        Response.Write("<script>alert('Registration Successful')<script>");
-                        return RedirectToAction("Login", "Account");
-                    }
+                    NT.SaveChanges();
+                    Response.Write("<script>alert('Registration Successful')<script>");
+                    return RedirectToAction("Login", "Account");
                 }
+               
             }
-            return View();
-            
-        }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            return View();            
         }
 
         //
