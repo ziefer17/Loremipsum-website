@@ -136,7 +136,7 @@ namespace ProjectLoremipsu.Controllers
                 ur.user_id = new Random().Next();
                 ur.created_date = DateTime.Now;
                 ur.role = "User";
-                    NT.users.Add(user);
+                    NT.users.Add(ur);
                 if (NT.users.Any(x => x.email == ur.email))
                 {
                     ViewBag.Message = "Email already registered";
