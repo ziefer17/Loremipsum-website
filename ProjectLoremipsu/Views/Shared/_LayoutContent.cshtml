@@ -14,104 +14,224 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/js/all.js"></script>
 
 
-    <!--font-family-->
+    font-family
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- title of site -->
+    title of site
     <title>Loremipsu: Nền tảng cho thuê bất động sản ở tp.HCM </title>
 
-    <!-- For favicon png -->
+    For favicon png
     <link rel="shortcut icon" type="image/icon" href="~/Content/assets/logo/Logo-favicon.jpg" />
 
-    <!--font-awesome.min.css-->
+    font-awesome.min.css
     <link rel="stylesheet" href="~/Content/assets/css/font-awesome.min.css">
 
-    <!--linear icon css-->
+    linear icon css
     <link rel="stylesheet" href="~/Content/assets/css/linearicons.css">
 
-    <!--animate.css-->
+    animate.css
     <link rel="stylesheet" href="~/Content/assets/css/animate.css">
 
-    <!--flaticon.css-->
+    flaticon.css
     <link rel="stylesheet" href="~/Content/assets/css/flaticon.css">
 
-    <!--slick.css-->
+    slick.css
     <link rel="stylesheet" href="~/Content/assets/css/slick.css">
     <link rel="stylesheet" href="~/Content/assets/css/slick-theme.css">
 
-    <!--bootstrap.min.css-->
+    bootstrap.min.css
     <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
 
-    <!-- bootsnav -->
+    bootsnav
     <link rel="stylesheet" href="~/Content/assets/css/bootsnav.css">
 
-    <!--style.css-->
+    style.css
     <link rel="stylesheet" href="~/Content/assets/css/style.css">
 
-    <!--responsive.css-->
+    responsive.css
     <link rel="stylesheet" href="~/Content/assets/css/responsive.css">
 
 
     <style>
         body, h1, h2, h3, h4, h5, h6 {
-            font-family: "Raleway", Arial, Helvetica, sans-serif
+            font-family: Arial, sans-serif;
         }
 
-        .mySlides {
-            display: none
+        /* Phong cách tổng thể */
+        body {
+            background-color: #f2f3f5;
+            color: #333;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Phong cách phần chính */
+        .content-section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tiêu đề và bố cục */
+        h2 {
+            color: #2b7a78;
+            text-align: center;
         }
 
         .w3-main {
-            background-color: #e3f6f5;
+            background-color: #f7f9fb;
         }
 
-        .comment-section {
-            background-color: #fff;
-            padding: 20px;
+        /* Slideshow */
+        .slideshow-container {
+            position: relative;
+            margin: auto;
+            max-width: 100%;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .slideshow-container img {
             width: 100%;
+            border-radius: 8px;
+        }
+
+        .thumbnail-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .thumbnail {
+            flex: 1;
+            max-width: 80px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+            .thumbnail img {
+                width: 100%;
+                border-radius: 4px;
+                border: 2px solid transparent;
+            }
+
+                .thumbnail img:hover {
+                    border: 2px solid #2b7a78;
+                }
+        /* Nút điều hướng */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+            font-size: 18px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+        /* Section cho thông tin chi tiết */
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            flex: 1 1 48%;
+            background-color: #e9f7f7;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+            .info-box i {
+                font-size: 1.5em;
+                color: #2b7a78;
+                margin-right: 10px;
+            }
+        /* Phần liên hệ */
+        .contact-info {
+            background-color: #ffffff;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+            .contact-info h3 {
+                color: #2b7a78;
+            }
+
+            .contact-info p {
+                font-size: 18px;
+                color: #333;
+            }
+
+            .contact-info a {
+                color: #2b7a78;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+                .contact-info a:hover {
+                    text-decoration: underline;
+                }
+
+
+        /* Phần bình luận */
+        .comment-section {
+            background-color: #ffffff;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
 
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        .rating {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .comment-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         textarea {
             width: 100%;
             height: 80px;
-            margin-bottom: 10px;
             padding: 10px;
             border-radius: 4px;
             border: 1px solid #ddd;
+            margin-bottom: 10px;
         }
 
-        button {
-            background-color: #4CAF50;
+        .btn {
+            background-color: #2b7a78;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-weight: bold;
         }
 
-        button:hover {
-            background-color: #45a049;
-        }
+            .btn:hover {
+                background-color: #3aafa9;
+            }
 
         .comment {
             background-color: #f9f9f9;
@@ -121,15 +241,15 @@
             border: 1px solid #ddd;
         }
 
-        .comment h4 {
-            margin: 0;
-            color: #555;
-        }
+            .comment h4 {
+                margin: 0;
+                color: #555;
+            }
 
-        .comment p {
-            margin: 5px 0 0 0;
-            color: #777;
-        }
+            .comment p {
+                margin-top: 5px;
+                color: #777;
+            }
 
         .stars {
             color: #FFD700;
@@ -141,111 +261,66 @@
     <div>
         @RenderBody()
     </div>
-    <!--<section class="w3-content w3-border-left w3-border-right">-->
-        <!-- !PAGE CONTENT! -->
-        <!--<div class="w3-main">
-            <hr>-->
-            <!-- Push down content on small screens -->
-            <!--<div class="w3-hide-large" style="margin-top:80px"></div>-->
+    <section class="content-section">
+        <div class="slideshow-container">
+            <div class="mySlides"><img src="~/Content/image/img1-1.jpg" alt="Living room"></div>
+            <div class="mySlides"><img src="~/Content/image/img1-2.jpg" alt="Dining room"></div>
+            <div class="mySlides"><img src="~/Content/image/img1-3.jpg" alt="Bedroom"></div>
+            <div class="mySlides"><img src="~/Content/image/img1-4.jpg" alt="Second Living Room"></div>
+            <button class="prev" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="next" onclick="plusDivs(1)">&#10095;</button>
+        </div>
 
-            <!-- Slideshow Header -->
-            <!--<div class="w3-container" id="apartment">
-                <h2 class="w3-text-green">The Apartment</h2>
-                <div class="w3-display-container mySlides">
-                    <img src="~/Content/image/img1-1.jpg" style="width:100%;margin-bottom:-6px">
-                </div>
-                <div class="w3-display-container mySlides">
-                    <img src="~/Content/image/img1-2.jpg" style="width:100%;margin-bottom:-6px">
-                </div>
-                <div class="w3-display-container mySlides">
-                    <img src="~/Content/image/img1-3.jpg" style="width:100%;margin-bottom:-6px">
-                </div>
-                <div class="w3-display-container mySlides">
-                    <img src="~/Content/image/img1-4.jpg" style="width:100%;margin-bottom:-6px">
-                </div>
+        <div class="thumbnail-row">
+            <div class="thumbnail" onclick="currentDiv(1)"><img src="~/Content/image/img1-1.jpg"></div>
+            <div class="thumbnail" onclick="currentDiv(2)"><img src="~/Content/image/img1-2.jpg"></div>
+            <div class="thumbnail" onclick="currentDiv(3)"><img src="~/Content/image/img1-3.jpg"></div>
+            <div class="thumbnail" onclick="currentDiv(4)"><img src="~/Content/image/img1-4.jpg"></div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-box"><i class="fa-solid fa-car-side"></i> Chỗ để xe: 4</div>
+            <div class="info-box"><i class="fa fa-fw fa-bath"></i> Phòng tắm: 2</div>
+            <div class="info-box"><i class="fa fa-fw fa-bed"></i> Phòng ngủ: 1</div>
+            <div class="info-box"><i class="fa fa-wifi"></i> WiFi</div>
+            <div class="info-box"><i class="fa fa-tv"></i> TV</div>
+            <div class="info-box"><i class="fa fa-kitchen"></i> Nhà bếp</div>
+            <div class="info-box"><i class="fa fa-wind"></i> Điều hòa</div>
+        </div>
+
+        <!-- Thêm phần liên hệ -->
+        <div class="contact-info">
+            <h3>Liên hệ</h3>
+            <p>Để biết thêm thông tin chi tiết hoặc cần hỗ trợ, vui lòng gọi số điện thoại dưới đây:</p>
+            <p><a href="tel:+84123456789">+84 123 456 789</a></p>
+        </div>
+
+        <div class="comment-section">
+            <h2>Bình luận và Đánh giá</h2>
+
+            <div class="rating">
+                <label for="rating">Đánh giá:</label>
+                <select id="rating" name="rating">
+                    <option value="1">1 sao</option>
+                    <option value="2">2 sao</option>
+                    <option value="3">3 sao</option>
+                    <option value="4">4 sao</option>
+                    <option value="5">5 sao</option>
+                </select>
             </div>
-            <div class="w3-row-padding w3-section">
-                <div class="w3-col s3">
-                    <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-1.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Living room">
-                </div>
-                <div class="w3-col s3">
-                    <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-2.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Dining room">
-                </div>
-                <div class="w3-col s3">
-                    <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-3.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Bedroom">
-                </div>
-                <div class="w3-col s3">
-                    <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-4.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
-                </div>
+
+            <div class="comment-box">
+                <textarea id="comment" placeholder="Nhập bình luận của bạn..."></textarea>
+                <button class="btn" onclick="submitComment()">Gửi</button>
             </div>
 
-            <div class="w3-container">
-                <h4><strong>The space</strong></h4>
-                <div class="w3-row w3-large">
-                    <div class="w3-col s6">
-                        <p><i class="fa-solid fa-car-side"></i> Chỗ để xe: 4</p>
-                        <p><i class="fa fa-fw fa-bath"></i> phòng tắm: 2</p>
-                        <p><i class="fa fa-fw fa-bed"></i> phòng ngủ: 1</p>
-                    </div>
-                </div>
-                <hr>
-
-                <h4><strong>Amenities</strong></h4>
-                <div class="w3-row w3-large">
-                    <div class="w3-col s6">
-                        <p>Shower</p>
-                        <p>WiFi</p>
-                        <p>TV</p>
-                    </div>
-                    <div class="w3-col s6">
-                        <p>Kitchen</p>
-                        <p>Air Conditioner</p>
-                        <p>Wheelchair Accessible</p>
-                    </div>
-                </div>
-                <hr>
-
-                <h4><strong>Extra Info</strong></h4>
-                <p>Our apartment is really clean and we like to keep it that way. Enjoy the lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <h2><b>Price: 5 000 000</b></h2>
-                <hr>-->
-
-                <!-- Contact -->
-                <!--<div class="w3-container" id="contact">
-                    <h2>Contact</h2>
-                    <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
-                    <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
-                    <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
-                </div>
-
-                <div class="comment-section">
-                    <h2>Bình luận và Đánh giá</h2>
-
-                    <div class="rating">
-                        <label for="rating">Đánh giá:</label>
-                        <select id="rating" name="rating">
-                            <option value="1">1 sao</option>
-                            <option value="2">2 sao</option>
-                            <option value="3">3 sao</option>
-                            <option value="4">4 sao</option>
-                            <option value="5">5 sao</option>
-                        </select>
-                    </div>
-
-                    <div class="comment-box">
-                        <textarea id="comment" placeholder="Nhập bình luận của bạn ở đây..." required></textarea>
-                        <button class="welcome-hero-btn" style="height: 34px; width:30px; margin-top: 20px;" onclick="submitComment()">Gửi</button>
-                    </div>
-
-                    <div id="comment-list">-->
-                        <!-- Các bình luận sẽ được hiển thị ở đây -->
-                    <!--</div>
-
-                </div>
-
+            <div id="comment-list">
+                <!-- Nơi hiển thị bình luận -->
             </div>
         </div>
     </section>
+    </div>
+
     <script>
         function submitComment() {
             const commentText = document.getElementById("comment").value;
@@ -313,36 +388,36 @@
             x[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " w3-opacity-off";
         }
-    </script>-->
+    </script>
 
 
 
-    <!-- Include all js compiled plugins (below), or include individual files as needed -->
+    Include all js compiled plugins (below), or include individual files as needed
 
     <script src="~/Content/assets/js/jquery.js"></script>
 
-    <!--modernizr.min.js-->
+    modernizr.min.js
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
-    <!--bootstrap.min.js-->
+    bootstrap.min.js
     <script src="~/Content/assets/js/bootstrap.min.js"></script>
 
-    <!-- bootsnav js -->
+    bootsnav js
     <script src="~/Content/assets/js/bootsnav.js"></script>
 
-    <!--feather.min.js-->
+    feather.min.js
     <script src="~/Content/assets/js/feather.min.js"></script>
 
-    <!-- counter js -->
+    counter js
     <script src="~/Content/assets/js/jquery.counterup.min.js"></script>
     <script src="~/Content/assets/js/waypoints.min.js"></script>
 
-    <!--slick.min.js-->
+    slick.min.js
     <script src="~/Content/assets/js/slick.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
-    <!--Custom JS-->
+    Custom JS
     <script src="~/Content/assets/js/custom.js"></script>
 </body>
 </html>
