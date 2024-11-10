@@ -2,10 +2,10 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    
 }
 
-
+<div>@Html.Partial("_PartialPageTopHeader")</div>
 <section class="w3-content w3-border-left w3-border-right">
     <!-- !PAGE CONTENT! -->
     <button class="welcome-hero-btn box-header">@Html.ActionLink("Trở về", "Index", "images")</button>
