@@ -11,7 +11,8 @@ namespace ProjectLoremipsu.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class property
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,12 +26,15 @@ namespace ProjectLoremipsu.Models
     
         public int property_id { get; set; }
         public string description { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> created_date { get; set; }
         public string address { get; set; }
         public Nullable<int> property_size { get; set; }
         public Nullable<int> num_bedrooms { get; set; }
         public Nullable<int> num_bathrooms { get; set; }
         public Nullable<int> num_carspaces { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public Nullable<int> price { get; set; }
         public Nullable<int> user_id { get; set; }
         public Nullable<int> status_id { get; set; }

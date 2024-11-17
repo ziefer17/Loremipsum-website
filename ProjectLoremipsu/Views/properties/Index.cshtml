@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProjectLoremipsu.Models.property>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutList.cshtml";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
 @foreach (var item in Model)
@@ -14,15 +14,17 @@
                         <img src="@Url.Content(image.img1)" alt="Image of @item.address" class="fm-img" />
                     }
                 </div>
-                <div>
-                    <h1><a href="">@Html.DisplayFor(modelItem => item.address)</a></h1>
-                    <p>@Html.ActionLink("Chi tiết", "Details", "properties", new { id = item.property_id }, null)</p>
+                <div class="listing-inner define_float">
+                    <h2>@Html.DisplayFor(modelItem => item.address)</h2>
+                    <span>@Html.DisplayFor(mdoelItem => item.property_location.description)</span>
+
                     <ul>
                         <li>@Html.DisplayFor(modelItem => item.num_bedrooms) <i class="fa fa-fw fa-bed"></i></li>
                         <li>@Html.DisplayFor(modelItem => item.num_bathrooms) <i class="fa fa-fw fa-bath"></i></li>
                         <li>@Html.DisplayFor(modelItem => item.num_carspaces) Chỗ để xe</li>
                     </ul>
-                    <p class="price">$@Html.DisplayFor(modelItem => item.price)</p>
+                    <p class="price">@Html.DisplayFor(modelItem => item.price)</p>
+                    <p class="btn btn-default">@Html.ActionLink("Chi tiết", "Details", "properties", new { id = item.property_id }, null)</p>
                 </div>
             </div>
         </div>
