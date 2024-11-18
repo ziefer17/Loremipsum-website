@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\Doan2024ltw\\Loremipsum-website\\ProjectLoremipsu\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F8B7DF14-1C19-4046-89DD-EB791529EB86}|ProjectLoremipsu.csproj|D:\\Doan2024ltw\\Loremipsum-website\\ProjectLoremipsu\\views\\shared\\_layoutcontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F8B7DF14-1C19-4046-89DD-EB791529EB86}|ProjectLoremipsu.csproj|solutionrelative:views\\shared\\_layoutcontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8B7DF14-1C19-4046-89DD-EB791529EB86}|ProjectLoremipsu.csproj|d:\\doan2024ltw\\loremipsum-website\\projectloremipsu\\views\\home\\testcontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F8B7DF14-1C19-4046-89DD-EB791529EB86}|ProjectLoremipsu.csproj|solutionrelative:views\\home\\testcontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8B7DF14-1C19-4046-89DD-EB791529EB86}|ProjectLoremipsu.csproj|D:\\Doan2024ltw\\Loremipsum-website\\ProjectLoremipsu\\views\\images\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F8B7DF14-1C19-4046-89DD-EB791529EB86}|ProjectLoremipsu.csproj|solutionrelative:views\\images\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F8B7DF14-1C19-4046-89DD-EB791529EB86}|ProjectLoremipsu.csproj|D:\\Doan2024ltw\\Loremipsum-website\\ProjectLoremipsu\\views\\shared\\_layoutcontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F8B7DF14-1C19-4046-89DD-EB791529EB86}|ProjectLoremipsu.csproj|solutionrelative:views\\shared\\_layoutcontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TestContent.cshtml",
               "DocumentMoniker": "D:\\Doan2024ltw\\Loremipsum-website\\ProjectLoremipsu\\Views\\Home\\TestContent.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\TestContent.cshtml",
@@ -39,28 +35,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Doan2024ltw\\Loremipsum-website\\ProjectLoremipsu\\Views\\images\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\images\\Index.cshtml",
-              "ToolTip": "D:\\Doan2024ltw\\Loremipsum-website\\ProjectLoremipsu\\Views\\images\\Index.cshtml",
-              "RelativeToolTip": "Views\\images\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-08T10:30:19.697Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "_LayoutContent.cshtml",
               "DocumentMoniker": "D:\\Doan2024ltw\\Loremipsum-website\\ProjectLoremipsu\\Views\\Shared\\_LayoutContent.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_LayoutContent.cshtml",
               "ToolTip": "D:\\Doan2024ltw\\Loremipsum-website\\ProjectLoremipsu\\Views\\Shared\\_LayoutContent.cshtml",
               "RelativeToolTip": "Views\\Shared\\_LayoutContent.cshtml",
-              "ViewState": "AgIAAPwAAAAAAAAAAAAAwMkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACgBAAAAAAAAAAAuwDABAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-08T10:26:34.929Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-08T10:26:34.929Z"
             }
           ]
         }
