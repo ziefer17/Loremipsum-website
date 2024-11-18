@@ -400,7 +400,6 @@
     <Content Include="Views\Shared\_LayoutForm.cshtml" />
     <Content Include="Views\Shared\_LayoutContent.cshtml" />
     <Content Include="Views\Home\TestContent.cshtml" />
-    <Content Include="Views\Shared\_LayoutList.cshtml" />
     <Content Include="Views\Home\TestList.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Home\Form.cshtml" />
