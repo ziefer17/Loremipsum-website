@@ -1,0 +1,16 @@
+﻿@model ProjectLoremipsu.Models.user
+
+@{
+    ViewBag.Title = "UserDashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset>
+    <legend>User Dashboard</legend>
+
+    @if (Session["Username"] != null)
+    {
+        <text>Welcome @Session["Username"].ToString()</text>
+    }
+</fieldset>
+

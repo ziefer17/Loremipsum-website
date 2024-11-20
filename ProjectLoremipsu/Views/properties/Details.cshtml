@@ -2,298 +2,669 @@
 
 @{
     ViewBag.Title = "Details";
-    
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
+<style>
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: Arial, sans-serif;
+    }
 
-<div>@Html.Partial("_PartialPageTopHeader")</div>
-<section class="w3-content w3-border-left w3-border-right">
-    <!-- !PAGE CONTENT! -->
-    <button class="welcome-hero-btn box-header">@Html.ActionLink("Trở về", "Index", "images")</button>
-    <div class="w3-main">
-        <hr>
-        <!-- Push down content on small screens -->
-        <div class="w3-hide-large" style="margin-top:80px"></div>
+    /* Phong cách tổng thể */
+    body {
+        background-color: #f2f3f5;
+        color: #333;
+        margin: 0;
+        padding:0;
+    }
 
-        <!-- Slideshow Header -->
-        <div class="w3-container" id="apartment">
-            <h2 class="w3-text-green">@Html.DisplayFor(model => model.address)</h2>
-            <div class="w3-display-container mySlides">
-                <img src="~/Content/image/img1-1.jpg" style="width:100%;margin-bottom:-6px">
-            </div>
-            <div class="w3-display-container mySlides">
-                <img src="~/Content/image/img1-2.jpg" style="width:100%;margin-bottom:-6px">
-            </div>
-            <div class="w3-display-container mySlides">
-                <img src="~/Content/image/img1-3.jpg" style="width:100%;margin-bottom:-6px">
-            </div>
-            <div class="w3-display-container mySlides">
-                <img src="~/Content/image/img1-4.jpg" style="width:100%;margin-bottom:-6px">
+    .container {
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Phong cách phần chính */
+    .content-section {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Tiêu đề và bố cục */
+    h2 {
+        color: #2b7a78;
+        text-align: center;
+    }
+
+    .w3-main {
+        background-color: #f7f9fb;
+    }
+
+    /* Slideshow */
+    .slideshow-container {
+        position: relative;
+        margin: auto;
+        max-width: 100%;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .slideshow-container img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .thumbnail-row {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .thumbnail {
+        flex: 1;
+        max-width: 80px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+        .thumbnail img {
+            width: 100%;
+            border-radius: 4px;
+            border: 2px solid transparent;
+        }
+
+            .thumbnail img:hover {
+                border: 2px solid #2b7a78;
+            }
+
+    /* Nút điều hướng */
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 16px;
+        font-size: 18px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .next {
+        right: 0%;
+    }
+
+    /* Section cho thông tin chi tiết */
+    .info-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+        font-size: 1.1em;
+    }
+
+    .info-box {
+        flex: 1 1 48%;
+        display: flex;
+        align-items: center;
+    }
+
+        .info-box i {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+    /* Phần giá và diện tích */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 50%;
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+    }
+
+
+    /* Phần thông tin mô tả */
+    .card {
+        width: 100%;
+        padding: 20px;
+        margin-top: 20px;
+        margin-left: 20px auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        font-family: Arial, sans-serif;
+        text-align: left;
+    }
+
+    .card-title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .card-description {
+        font-size: 1em;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    /* Phần bình luận */
+    .comment-section {
+        width: 100%;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    textarea {
+        width: 100%;
+        height: 80px;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        background-color: #2b7a78;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+        .btn:hover {
+            background-color: #3aafa9;
+        }
+
+    .comment {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+    }
+
+        .comment h4 {
+            margin: 0;
+            color: #555;
+        }
+
+        .comment p {
+            margin-top: 5px;
+            color: #777;
+        }
+
+    .stars {
+        color: #FFD700;
+    }
+
+    /* Phần liên hệ */
+    .contact-info {
+        width: 100%;
+        height: 50vh;
+        background-color: #f9f9f9;
+        background-size: cover;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: left;
+    }
+
+        .contact-info h3 {
+            color: #2b7a78;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #2b7a78;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+            .contact-info a:hover {
+                text-decoration: underline;
+            }
+    /* Định dạng bảng thông tin cố định */
+    /* Container bao cả hai bảng */
+    .info-container {
+        display: flex; /* Sử dụng Flexbox */
+        flex-direction: column; /* Đặt theo chiều dọc */
+        position: fixed; /* Cố định container */
+        top: 145px; /* Cách mép trên */
+        right: 10px; /* Cách mép phải */
+        gap: 10px; /* Khoảng cách giữa các bảng */
+    }
+
+    .info-card {
+        width: 400px; /* Chiều rộng bảng */
+    }
+
+    /* Bảng thông tin chủ nhà */
+    .user-info-card {
+        top: 120px; /* Vị trí bảng chủ nhà (cao hơn admin) */
+    }
+
+    .user-card, .admin-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+        /* Tên */
+        .user-card h3, .admin-card h3 {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        /* Vai trò */
+        .user-card .role, .admin-card .role {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        /* Trạng thái */
+        .user-card .status, .admin-card .status {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        /* Thông tin thêm */
+        .user-card .info, .admin-card .info {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* Nút liên hệ */
+        .user-card .contact, .admin-card .contact {
+            margin-top: 5px;
+        }
+
+        .user-card .contact-btn, .admin-card .contact-btn {
+            /*display: flex;
+            align-items: center;
+            justify-content: center;*/
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .user-card .chat-btn, .admin-card .chat-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        /* Gợi ý hỗ trợ */
+        .user-card .suggestions, .admin-card .suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .user-card .suggestion, .admin-card .suggestion {
+            background-color: #f1f1f1;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+            .user-card .suggestion:hover, .admin-card .suggestion:hover {
+                background-color: #ddd;
+            }
+            .go-back {
+                font:bold 24px;
+                text-align:center;
+            }
+
+</style>
+
+<button class="welcome-hero-btn box-header">@Html.ActionLink("Trở về", "Index", "properties", htmlAttributes: new { @class = "go-back" })</button>
+<section class="content-section">
+    @foreach (var image in Model.images)
+    {
+        <div class="slideshow-container">
+            <div class="mySlides"><img src="@Url.Content(image.img1)" alt="Living room"></div>
+            <div class="mySlides"><img src="@Url.Content(image.img2)" alt="Dining room"></div>
+            <div class="mySlides"><img src="@Url.Content(image.img3)" alt="Bedroom"></div>
+            <div class="mySlides"><img src="@Url.Content(image.img4)" alt="Second Living Room"></div>
+            <button class="prev" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="next" onclick="plusDivs(1)">&#10095;</button>
+        </div>
+
+        <div class="thumbnail-row">
+            <div class="thumbnail" onclick="currentDiv(1)"><img src="@Url.Content(image.img1)"></div>
+            <div class="thumbnail" onclick="currentDiv(2)"><img src="@Url.Content(image.img2)"></div>
+            <div class="thumbnail" onclick="currentDiv(3)"><img src="@Url.Content(image.img3)"></div>
+            <div class="thumbnail" onclick="currentDiv(4)"><img src="@Url.Content(image.img4)"></div>
+        </div>
+    }
+
+    <!-- Container bao cả hai bảng -->
+    <div class="info-container">
+        <!-- Bảng thông tin chủ nhà -->
+        <div class="info-card user-info-card">
+            <div class="user-card">
+                <h3>Chủ Nhà: @Html.DisplayFor(model => model.user.name)</h3>
+                <div class="status">Hoạt động 1 ngày trước</div>
+                <div class="info">1 tin đăng</div>
+                <div class="info">Liên lạc</div>
+                <div class="contact">
+                    <button class="contact-btn">@Html.DisplayFor(model => model.user.phone)</button>
+                </div>
             </div>
         </div>
-        <div class="w3-row-padding w3-section">
-            <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-1.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Living room">
-            </div>
-            <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-2.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Dining room">
-            </div>
-            <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-3.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Bedroom">
-            </div>
-            <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/image/img1-4.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
-            </div>
-        </div>
 
-        <div class="w3-container">
-            <h4><strong>@Html.DisplayFor(model => model.property_location.description)</strong></h4>
-            <div class="w3-row w3-large">
-                <div class="w3-col s6">
-                    <p><i class="fa-solid fa-car-side"></i> Chỗ để xe: @Html.DisplayFor(model => model.num_carspaces)</p>
-                    <p><i class="fa fa-fw fa-bath"></i> phòng tắm: @Html.DisplayFor(model => model.num_bathrooms)</p>
-                    <p><i class="fa fa-fw fa-bed"></i> phòng ngủ: @Html.DisplayFor(model => model.num_bedrooms)</p>
+        <!-- Bảng thông tin admin -->
+        <div class="info-card admin-info-card">
+            <div class="admin-card">
+                <h3>Nhân Viên Hỗ Trợ</h3>
+                <div class="status">Hoạt động 2 giờ trước</div>
+                <div class="info">Liên lạc</div>
+                <div class="contact">
+                    <button class="contact-btn">0379 320 980</button>
                 </div>
             </div>
-            <hr>
-
-            <h4><strong>Thành phần</strong></h4>
-            <div class="w3-row w3-large">
-                <div class="w3-col s6">
-                    <p>Nhà để xe</p>
-                    <p>WiFi</p>
-                    <p>TV</p>
-                </div>
-                <div class="w3-col s6">
-                    <p>Nhà bếp</p>
-                    <p>Điều hòa</p>
-                    <p>Phù hợp với xe lăng</p>
-                </div>
-            </div>
-            <hr>
-
-            <h4><strong>Thông tin chi tiết:</strong></h4>
-            <p>@Html.DisplayFor(model => model.description)</p>
-            <h2><b>Giá cả: @Html.DisplayFor(model => model.price)</b></h2>
-            <hr>
-
-            <!-- Contact -->
-            <div class="w3-container" id="contact">
-                <h2>Contact</h2>
-                <i class="fa fa-map-marker" style="width:30px"></i> VN, tp. Ho Chi Minh<br>
-                <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
-                <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
-            </div>
-
-            <div class="comment-section">
-                <h2>Bình luận và</h2>
-
-                <div class="rating">
-                    <label for="rating">Đánh giá:</label>
-                    <select id="rating" name="rating">
-                        <option value="1">1 sao</option>
-                        <option value="2">2 sao</option>
-                        <option value="3">3 sao</option>
-                        <option value="4">4 sao</option>
-                        <option value="5">5 sao</option>
-                    </select>
-                </div>
-
-                <div class="comment-box">
-                    <textarea id="comment" placeholder="Nhập bình luận của bạn ở đây..." required></textarea>
-                    <button class="welcome-hero-btn" style="height: 34px; width:30px; margin-top: 20px;" onclick="submitComment()">Gửi</button>
-                </div>
-
-                <div id="comment-list">
-                    <!-- Các bình luận sẽ được hiển thị ở đây -->
-                </div>
-
-            </div>
-
         </div>
     </div>
+    @*CSS
+        /* Định dạng bảng thông tin cố định */
+        /* Container bao cả hai bảng */
+        .info-container {
+        display: flex; /* Sử dụng Flexbox */
+        flex-*@
+
+
+
+<div style="font-weight: bold; text-transform: uppercase;font-size:24px;">
+    @Html.DisplayFor(model => model.address)
+    <p>@Html.DisplayFor(model => model.property_location.description)</p>
+</div>
+    <div class="info-section">
+        <div class="info-box">
+            <i class="fa fas fa-car" style="margin-right:10px;"></i> Chỗ để xe: @Html.DisplayFor(model => model.num_carspaces)
+            <i class="fa fa-fw fa-bath" style="margin-left:10px;margin-right:10px;"></i> Phòng tắm: @Html.DisplayFor(model => model.num_bathrooms)
+            <i class="fa fa-fw fa-bed" style="margin-right:10px;margin-left:10px;"></i> Phòng ngủ:  @Html.DisplayFor(model => model.num_bedrooms)
+        </div>
+    </div>
+    <hr style="width: 100%;">
+
+    <div class="grid-container">
+        <div>Mức giá</div>
+        <div>Diện tích</div>        
+        <div style="font-weight: bold; color: red;">@Html.DisplayFor(model => model.price)/tháng</div>
+        <div style="font-weight: bold; color: red;">@Html.DisplayFor(model => model.property_size)m<sup>2</sup></div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Thông tin</div>
+        <div class="card-description">@Html.DisplayFor(model => model.description)</div>
+    </div>
+    <!-- Phần đánh giá -->
+    <div class="comment-section">
+        <h2>Bình luận và Đánh giá</h2>
+
+        <div class="rating">
+            <label for="rating">Đánh giá:</label>
+            <select id="rating" name="rating">
+                <option value="1">1 sao</option>
+                <option value="2">2 sao</option>
+                <option value="3">3 sao</option>
+                <option value="4">4 sao</option>
+                <option value="5">5 sao</option>
+            </select>
+        </div>
+        <div class="comment-box">
+            <textarea style="max-width:inherit" id="comment" placeholder="Nhập bình luận của bạn..."></textarea>
+            <button class="btn" style="background-color: #ffd803; color: #272343 " onclick="submitComment()">Gửi</button>
+        </div>
+
+        <div id="comment-list">
+            <!-- Nơi hiển thị bình luận -->
+        </div>
+    </div>
+
+    <!-- Bản đồ nhúng từ Google Maps -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.828366404417!2d105.81899391476216!3d21.002768394016747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abc12345678%3A0xabcdef1234567890!2zVGjhuqFjaCBQaMO6IGPGoW4gxJDhu5ljIFRo4buLY2hQZWQ!5e0!3m2!1sen!2s!4v1699819612872!5m2!1sen!2s"
+            width="100%"
+            height="300"
+            style="border:0;margin-top:20px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+
 </section>
+
+
 <script>
-        function submitComment() {
-            const commentText = document.getElementById("comment").value;
-            const rating = document.getElementById("rating").value;
+    function submitComment() {
+        const commentText = document.getElementById("comment").value;
+        const rating = document.getElementById("rating").value;
 
-            if (commentText === "") {
-                alert("Vui lòng nhập bình luận trước khi gửi.");
-                return;
-            }
-
-            const commentList = document.getElementById("comment-list");
-
-            const commentElement = document.createElement("div");
-            commentElement.classList.add("comment");
-
-            const ratingElement = document.createElement("h4");
-            ratingElement.classList.add("stars");
-            ratingElement.innerHTML = "Đánh giá: " + "★".repeat(rating);
-            commentElement.appendChild(ratingElement);
-
-            const textElement = document.createElement("p");
-            textElement.innerText = commentText;
-            commentElement.appendChild(textElement);
-
-            commentList.insertBefore(commentElement, commentList.firstChild);
-
-            document.getElementById("comment").value = "";
-            document.getElementById("rating").value = "1";
-        }
-        // Script to open and close sidebar when on tablets and phones
-        function w3_open() {
-            document.getElementById("mySidebar").style.display = "block";
-            document.getElementById("myOverlay").style.display = "block";
+        if (commentText === "") {
+            alert("Vui lòng nhập bình luận trước khi gửi.");
+            return;
         }
 
-        function w3_close() {
-            document.getElementById("mySidebar").style.display = "none";
-            document.getElementById("myOverlay").style.display = "none";
-        }
+        const commentList = document.getElementById("comment-list");
 
-        // Slideshow Apartment Images
-        var slideIndex = 1;
-        showDivs(slideIndex);
+        const commentElement = document.createElement("div");
+        commentElement.classList.add("comment");
 
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
-        }
+        const ratingElement = document.createElement("h4");
+        ratingElement.classList.add("stars");
+        ratingElement.innerHTML = "Đánh giá: " + "★".repeat(rating);
+        commentElement.appendChild(ratingElement);
 
-        function currentDiv(n) {
-            showDivs(slideIndex = n);
-        }
+        const textElement = document.createElement("p");
+        textElement.innerText = commentText;
+        commentElement.appendChild(textElement);
 
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            if (n > x.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = x.length }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-            }
-            x[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " w3-opacity-off";
+        commentList.insertBefore(commentElement, commentList.firstChild);
+
+        document.getElementById("comment").value = "";
+        document.getElementById("rating").value = "1";
+    }
+    // Script to open and close sidebar when on tablets and phones
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Slideshow Apartment Images
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function currentDiv(n) {
+        showDivs(slideIndex = n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
         }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+        }
+        x[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " w3-opacity-off";
+    }
 </script>
+
 
 @*<h2>Details</h2>
 
-<div>
-    <h4>property</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
+    <div>
+        <h4>property</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.created_date)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.created_date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.created_date)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.created_date)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.address)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.property_size)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.property_size)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.property_size)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.property_size)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.num_bedrooms)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.num_bedrooms)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.num_bedrooms)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.num_bedrooms)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.num_bathrooms)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.num_bathrooms)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.num_bathrooms)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.num_bathrooms)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.num_carspaces)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.num_carspaces)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.num_carspaces)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.num_carspaces)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.listing_type.description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.listing_type.description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.listing_type.description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.listing_type.description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.property_location.description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.property_location.description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.property_location.description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.property_location.description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.property_status.description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.property_status.description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.property_status.description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.property_status.description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.property_type.description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.property_type.description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.property_type.description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.property_type.description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.user.name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.user.name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.user.name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.user.name)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.property_id }) |
-    @Html.ActionLink("Trở về", "Homepage")
-</p>*@
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.property_id }) |
+        @Html.ActionLink("Trở về", "Homepage")
+    </p>*@

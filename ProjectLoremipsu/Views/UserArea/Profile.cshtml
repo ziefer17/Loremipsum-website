@@ -1,0 +1,30 @@
+﻿@model ProjectLoremipsu.Models.user
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+
+<fieldset>
+        <legend>User Dashboard</legend>
+
+        @if (Session["UserEmail"] != null)
+        {
+            <p>Welcome @Session["UserName"].ToString()</p>    
+            <p>Role:@Session["UserRole"].ToString()</p>
+            <p>Email:@Session["UserEmail"].ToString()</p>
+        }
+    </fieldset>
+@if ((string)Session["UserRole"] == "Admin")
+{
+<p><a href="@Url.Action("List","properties")">Xem danh sách</a></p>
+}
+else
+            {
+    <p><a href="@Url.Action("History","properties")">Xem lịch sử</a></p>
+                
+            }
+<p></p>
+<a href="@Url.Action("Homepage", "Home")">Đăng xuất</a>

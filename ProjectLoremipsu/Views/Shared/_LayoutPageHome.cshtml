@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <!-- meta data -->
@@ -87,210 +86,210 @@
                     Tất cả tại thành phố Hồ Chí Minh
                 </p>
             </div>
-            <div class="welcome-hero-serch-box">
-                <div class="searchform-property">
-                    <form class="searchform" action="#" method="get">
-                        <input type="hidden" name="post-type" value="property" />
-                        <div class="field-group">
-                            <div class="col-20 input-form">
-                                <input class="form-control" name="s" placeholder="ID, Building name, Adress...">
-                            </div>
-                            <div class="col-20 input-form form-property_location">
-                                <select class="form-control city_select" id="property_location" name="property_location">
-                                    <option value="0" data-id="0">-All Districts-</option>
-                                    <option value="binh-chanh" data-id="55">Binh Chanh</option>
-                                    <option value="binh-tan" data-id="161">Bình Tân</option>
-                                    <option value="binh-thanh" data-id="49">Bình Thạnh</option>
-                                    <option value="apartment-for-rent-district-1" data-id="36">Quận 1</option>
-                                    <option value="apartment-for-rent-in-district-10" data-id="45">Quận 10</option>
-                                    <option value="apartment-for-rent-in-district-11-hcmc" data-id="46">Quận 11</option>
-                                    <option value="apartment-for-rent-in-district-2" data-id="37">Quận 2</option>
-                                    <option value="apartment-for-rent-in-district-3" data-id="38">Quận 3</option>
-                                    <option value="apartment-for-rent-district-4" data-id="39">Quận 4</option>
-                                    <option value="apartment-for-rent-in-district-5" data-id="40">Quận 5</option>
-                                    <option value="apartment-for-rent-in-district-7" data-id="42">Quận 7</option>
-                                    <option value="apartment-for-rent-in-district-8" data-id="43">Quận 8</option>
-                                    <option value="apartment-for-rent-in-district-9" data-id="44">Quận 9 - Thủ Đức</option>
-                                    <option value="apartment-for-rent-in-go-vap" data-id="50">Gò vấp</option>
-                                    <option value="apartment-for-rent-in-phu-nhuan" data-id="51">Phu Nhuan</option>
-                                    <option value="apartment-for-rent-in-tan-binh" data-id="52">Tan Binh</option>
-                                    <option value="apartment-for-rent-in-tan-phu" data-id="53">Tan Phu</option>
-                                </select>
-                            </div>
-                            <div class="col-20 input-form form-property_type">
-                                <select class="form-control" id="property_type" name="property_type">
-                                    <option value="0">-Property Type-</option>
-                                    <option value="apartment-for-rent-in-hcmc" data-id="16">Chung cư</option>
-                                    <option value="house-for-rent-in-ho-chi-minh-city" data-id="34">Nhà ở</option>
-                                    <option value="serviced-apartment-ho-chi-minh-city" data-id="24">Office</option>
-                                    <option value="villa-for-rent-in-ho-chi-minh-city" data-id="35">Villa</option>
-                                </select>
-                            </div>
-                            <div class="col-20 input-form form-clda" style="display: none;">
-                                <select class="form-control" id="child_location" name="child_location">
-                                    <option value="0">-Buildings-</option>
-                                    <option value="city-garden">City Garden</option>
-                                    <option value="sunwah-pearl-apartment">Sunwah Pearl</option>
-                                    <option value="vinhomes-central-park">Vinhomes Central Park</option>
-                                    <option value="soho-residence-apartment">Soho Residence</option>
-                                    <option value="the-marq-district-1-for-rent">The MarQ</option>
-                                    <option value="vinhomes-golden-river-apartment">Vinhomes Golden River</option>
-                                    <option value="zenity-apartment-for-rent">Zenity</option>
-                                    <option value="apartment-for-rent-in-an-phu">An Phu</option>
-                                    <option value="apartment-for-rent-in-thao-dien">Thao Dien</option>
-                                    <option value="apartment-for-rent-in-thu-thiem">Thu Thiem</option>
-                                    <option value="diamond-island-apartments">Diamond Island</option>
-                                    <option value="feliz-en-vista-for-rent">Feliz En Vista</option>
-                                    <option value="masteri-millennium-for-rent">Masteri Millennium</option>
-                                    <option value="the-goldview-apartment-for-rent">The Goldview</option>
-                                    <option value="the-tresor-apartment-rent">The Tresor</option>
-                                    <option value="phu-my-hung-apartment">Phu My Hung</option>
-                                    <option value="saigon-south-apartment-for-rent">Saigon South Residences</option>
-                                    <option value="sunrise-riverside-apartment-for-rent">Sunrise Riverside</option>
-                                    <option value="vinhomes-grand-park">Vinhomes Grand Park</option>
-                                    <option value="garden-gate-apartment">Garden Gate</option>
-                                </select>
-                                <script text="text/script">
-                                    (function ($) {
-                                        function ActionForm() {
-                                            $('.form-clda').hide();
-                                            $('#property_type').change(function () {
-                                                if ($(this).val() == 'apartment-for-rent-in-hcmc') {
-                                                    $('.form-clda').show();
-                                                    $('.form-clda option[value="0"]').text('-Buildings-');
-                                                } else {
-                                                    $('.form-clda').hide();
-                                                    $('#child_location').val("0").change();
-                                                }
-                                            });
-                                            $('#child_location').change(function () {
-                                                if ($(this).val() != '0') {
-                                                    $('#child_location').attr('name', 'property_location');
-                                                } else {
-                                                    $('#child_location').attr('name', 'child_location');
-                                                }
-                                            })
-                                        }
-                                        $(document).ready(ActionForm);
-                                        $(document).ajaxComplete(function () {
-                                            ActionForm()
-                                        });
-                                    })(jQuery);
-                                </script>
-                            </div>
-                            <div class="col-20 input-form">
-                                <select class="form-control" name="property_listing">
-                                    <option value="0">-Trạng thái-</option>
-                                    <option value="mua">Mua</option>
-                                    <option value="cho-thue">Cho thuê</option>
-                                    <option value="cho-thue">Cho thuê</option>
-                                </select>
-                            </div>
-                            <div class="col-20 input-form">
-                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">
-                                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-                                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-                                <script text="text/script">
-                                    (function ($) {
-                                        $('.selectpicker').selectpicker();
-                                        $('.selectpicker').selectpicker('selectAll');
-                                        $('.selectpicker').selectpicker('deselectAll');
-                                    })(jQuery);
-                                </script>
-                            </div>
-                            <div class="col-15 input-form">
-                                <select class="form-control" name="number_bedroom">
-                                    <option value="0">Bedroom</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">6+</option>
-                                </select>
-                            </div>
-                            <div class="col-15 input-form">
-                                <select class="form-control" name="number_bathroom">
-                                    <option value="0">Bathroom</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">6+</option>
-                                </select>
-                            </div>
-                            <div class="col-15 input-form">
-                                <select class="form-control price_ranger" name="minimum_price">
-                                    <option value="0">-Min.Price-</option>
-                                    <option value="50">$50</option>
-                                    <option value="100">$100</option>
-                                    <option value="200">$200</option>
-                                    <option value="300">$300</option>
-                                    <option value="400">$400</option>
-                                    <option value="500">$500</option>
-                                    <option value="600">$600</option>
-                                    <option value="700">$700</option>
-                                    <option value="800">$800</option>
-                                    <option value="900">$900</option>
-                                    <option value="1000">$1000</option>
-                                    <option value="1200">$1200</option>
-                                    <option value="1400">$1400</option>
-                                    <option value="1600">$1600</option>
-                                    <option value="1800">$1800</option>
-                                    <option value="2000">$2000</option>
-                                    <option value="2200">$2200</option>
-                                    <option value="2500">$2500</option>
-                                    <option value="2800">$2800</option>
-                                    <option value="3000">$3000</option>
-                                    <option value="3500">$3500</option>
-                                    <option value="4000">$4000</option>
-                                    <option value="4500">$4500</option>
-                                    <option value="5000">$5000</option>
+            @using (Html.BeginForm("Index", "properties", FormMethod.Get))
+            {
 
-                                </select>
+
+                <div class="welcome-hero-serch-box" style="margin-left:100px;">
+                    <div class="searchform-property">
+                        <form class="searchform" action="#" method="get">
+                            <input type="hidden" name="post-type" value="property" />
+                            <div class="field-group">
+                                <div class="col-20 input-form">
+                                    @Html.TextBox("valueSearch", ViewBag.CurrentSearchTerm as string, new { @class = "form-control", placeholder = "Địa chỉ, thông tin, tên người dùng,.. " })
+                                </div>
+                                <div class="col-20 input-form form-property_location">
+                                    
+                                    <select class="form-control" id="property_type" name="property_type">
+                                        <option value="0">-Khu vực-</option>
+                                        <option>Quận 1</option>
+                                        <option>Quận 2</option>
+                                        <option>Quận 3</option>
+                                        <option>Quận 4</option>
+                                        <option>Quận 5</option>
+                                        <option>Quận 6</option>
+                                        <option>Quận 7</option>
+                                        <option>Quận 8</option>
+                                        <option>Quận 9</option>
+                                        <option>Quận 10</option>
+                                    </select>
+                                </div>
+                                <div class="col-20 input-form form-property_type">
+                                    @*@Html.DropDownList("searchType", (SelectList)ViewBag.listType, "All", new {@class="form-control",placeholder="Loại"})*@
+                                    <select class="form-control" id="property_type" name="property_type">
+                                        <option value="0">-Loại-</option>
+                                        <option value="apartment-for-rent-in-hcmc" data-id="16">Chung cư</option>
+                                        <option value="house-for-rent-in-ho-chi-minh-city" data-id="34">Nhà ở</option>
+                                        <option value="serviced-apartment-ho-chi-minh-city" data-id="24">Office</option>
+                                        <option value="villa-for-rent-in-ho-chi-minh-city" data-id="35">Villa</option>
+                                    </select>
+                                </div>
+                                <div class="col-20 input-form form-clda" style="display: none;">
+                                    <select class="form-control" id="child_location" name="child_location">
+                                        <option value="0">-Buildings-</option>
+                                        <option value="city-garden">City Garden</option>
+                                        <option value="sunwah-pearl-apartment">Sunwah Pearl</option>
+                                        <option value="vinhomes-central-park">Vinhomes Central Park</option>
+                                        <option value="soho-residence-apartment">Soho Residence</option>
+                                        <option value="the-marq-district-1-for-rent">The MarQ</option>
+                                        <option value="vinhomes-golden-river-apartment">Vinhomes Golden River</option>
+                                        <option value="zenity-apartment-for-rent">Zenity</option>
+                                        <option value="apartment-for-rent-in-an-phu">An Phu</option>
+                                        <option value="apartment-for-rent-in-thao-dien">Thao Dien</option>
+                                        <option value="apartment-for-rent-in-thu-thiem">Thu Thiem</option>
+                                        <option value="diamond-island-apartments">Diamond Island</option>
+                                        <option value="feliz-en-vista-for-rent">Feliz En Vista</option>
+                                        <option value="masteri-millennium-for-rent">Masteri Millennium</option>
+                                        <option value="the-goldview-apartment-for-rent">The Goldview</option>
+                                        <option value="the-tresor-apartment-rent">The Tresor</option>
+                                        <option value="phu-my-hung-apartment">Phu My Hung</option>
+                                        <option value="saigon-south-apartment-for-rent">Saigon South Residences</option>
+                                        <option value="sunrise-riverside-apartment-for-rent">Sunrise Riverside</option>
+                                        <option value="vinhomes-grand-park">Vinhomes Grand Park</option>
+                                        <option value="garden-gate-apartment">Garden Gate</option>
+                                    </select>
+                                    <script text="text/script">
+                                        (function ($) {
+                                            function ActionForm() {
+                                                $('.form-clda').hide();
+                                                $('#property_type').change(function () {
+                                                    if ($(this).val() == 'apartment-for-rent-in-hcmc') {
+                                                        $('.form-clda').show();
+                                                        $('.form-clda option[value="0"]').text('-Buildings-');
+                                                    } else {
+                                                        $('.form-clda').hide();
+                                                        $('#child_location').val("0").change();
+                                                    }
+                                                });
+                                                $('#child_location').change(function () {
+                                                    if ($(this).val() != '0') {
+                                                        $('#child_location').attr('name', 'property_location');
+                                                    } else {
+                                                        $('#child_location').attr('name', 'child_location');
+                                                    }
+                                                })
+                                            }
+                                            $(document).ready(ActionForm);
+                                            $(document).ajaxComplete(function () {
+                                                ActionForm()
+                                            });
+                                        })(jQuery);
+                                    </script>
+                                </div>
+                                <div class="col-20 input-form">
+                                    @*@Html.DropDownList("searchList", (SelectList)ViewBag.listList, "All", new { @class = "form-control", placeholder = "Trạng thái" })*@
+                                    <select class="form-control" name="property_listing">
+                                        <option value="0">-Trạng thái-</option>
+                                        <option value="mua">Mua</option>
+                                        <option value="cho-thue">Cho thuê</option>                                        
+                                    </select>
+                                </div>
+                                <div class="col-20 input-form">
+                                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">
+                                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+                                    <script text="text/script">
+                                        (function ($) {
+                                            $('.selectpicker').selectpicker();
+                                            $('.selectpicker').selectpicker('selectAll');
+                                            $('.selectpicker').selectpicker('deselectAll');
+                                        })(jQuery);
+                                    </script>
+                                </div>
+                                <div class="col-15 input-form">
+                                        <select class="form-control" name="number_bedroom">
+                                            <option value="0">Phòng ngủ</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">6+</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-15 input-form">
+                                        <select class="form-control" name="number_bathroom">
+                                            <option value="0">Phòng tắm</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">6+</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-15 input-form">
+                                        <select class="form-control price_ranger" name="minimum_price">
+                                            <option value="0">-Giá tối thiểu-</option>
+                                            <option value="50">$50</option>
+                                            <option value="100">$100</option>
+                                            <option value="200">$200</option>
+                                            <option value="300">$300</option>
+                                            <option value="400">$400</option>
+                                            <option value="500">$500</option>
+                                            <option value="600">$600</option>
+                                            <option value="700">$700</option>
+                                            <option value="800">$800</option>
+                                            <option value="900">$900</option>
+                                            <option value="1000">$1000</option>
+                                            <option value="1200">$1200</option>
+                                            <option value="1400">$1400</option>
+                                            <option value="1600">$1600</option>
+                                            <option value="1800">$1800</option>
+                                            <option value="2000">$2000</option>
+                                            <option value="2200">$2200</option>
+                                            <option value="2500">$2500</option>
+                                            <option value="2800">$2800</option>
+                                            <option value="3000">$3000</option>
+                                            <option value="3500">$3500</option>
+                                            <option value="4000">$4000</option>
+                                            <option value="4500">$4500</option>
+                                            <option value="5000">$5000</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-15 input-form">
+                                        <select class="form-control price_ranger" name="maximum_price">
+                                            <option value="99999999">-Giá tối đa-</option>
+                                            <option value="100">$100</option>
+                                            <option value="200">$200</option>
+                                            <option value="300">$300</option>
+                                            <option value="400">$400</option>
+                                            <option value="500">$500</option>
+                                            <option value="600">$600</option>
+                                            <option value="700">$700</option>
+                                            <option value="800">$800</option>
+                                            <option value="900">$900</option>
+                                            <option value="1000">$1000</option>
+                                            <option value="1200">$1200</option>
+                                            <option value="1400">$1400</option>
+                                            <option value="1600">$1600</option>
+                                            <option value="1800">$1800</option>
+                                            <option value="2000">$2000</option>
+                                            <option value="2200">$2500</option>
+                                            <option value="2800">$2800</option>
+                                            <option value="3000">$3000</option>
+                                            <option value="3500">$3500</option>
+                                            <option value="4000">$4000</option>
+                                            <option value="4500">$4500</option>
+                                            <option value="5000">$5000</option>
+                                            <option value="6000">$6000</option>
+                                            <option value="7000">$7000</option>
+                                            <option value="8000">$8000</option>
+                                        </select>
+                                    </div>
+                                <div class="welcome-hero-serch">
+                                    <button type="submit" class="welcome-hero-btn" style="font-size:14px; height:34px;">
+                                        <b>Tìm kiếm</b>  <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-15 input-form">
-                                <select class="form-control price_ranger" name="maximum_price">
-                                    <option value="99999999">-Max.Price-</option>
-                                    <option value="100">$100</option>
-                                    <option value="200">$200</option>
-                                    <option value="300">$300</option>
-                                    <option value="400">$400</option>
-                                    <option value="500">$500</option>
-                                    <option value="600">$600</option>
-                                    <option value="700">$700</option>
-                                    <option value="800">$800</option>
-                                    <option value="900">$900</option>
-                                    <option value="1000">$1000</option>
-                                    <option value="1200">$1200</option>
-                                    <option value="1400">$1400</option>
-                                    <option value="1600">$1600</option>
-                                    <option value="1800">$1800</option>
-                                    <option value="2000">$2000</option>
-                                    <option value="2200">$2500</option>
-                                    <option value="2800">$2800</option>
-                                    <option value="3000">$3000</option>
-                                    <option value="3500">$3500</option>
-                                    <option value="4000">$4000</option>
-                                    <option value="4500">$4500</option>
-                                    <option value="5000">$5000</option>
-                                    <option value="6000">$6000</option>
-                                    <option value="7000">$7000</option>
-                                    <option value="8000">$8000</option>
-                                </select>
-                            </div>
-                            <div class="welcome-hero-serch">
-                                <button class="welcome-hero-btn" style="font-size:14px; height:34px;" onclick="window.location.href='#'">
-                                    <b>Tìm kiếm</b>  <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
 
     </section><!--/.welcome-hero-->
@@ -310,7 +309,7 @@
                             </div>
                             <h2><a href="#">Giao <span>tiếp với cộng đồng</span></a></h2>
                             <p>
-                                tự do trao đổi thông tin, liên lạc với các đối tác.
+                                Tự do trao đổi thông tin, liên lạc với các đối tác.
                             </p>
                         </div>
                     </div>
@@ -321,7 +320,8 @@
                             </div>
                             <h2><a href="#">tìm <span> kiếm nhà ở</span></a></h2>
                             <p>
-                                Bao gồm danh sách bất động sản đồ sộ tha hồ cho bạn tiềm kiếm.
+                                Bao gồm danh sách bất động sản
+                                đồ sộ tha hồ cho bạn tiềm kiếm.
                             </p>
 
                         </div>
@@ -338,12 +338,12 @@
 
                         </div>
                     </div>
-                    <button class="welcome-hero-btn how" onclick="window.location.href='#explore'">
-                            tiềm hiểu thêm
-                        </button>
+                    <button class="welcome-hero-btn how" style="width:200px;" onclick="window.location.href='@Url.Action("Index","properties")'">
+                        tiềm hiểu thêm
+                    </button>
                 </div>
             </div>
-        </div><!--/.container-->       
+        </div><!--/.container-->
 
     </section><!--/.works-->
     <!--works end -->
@@ -355,14 +355,11 @@
                 <p>Tận hưởng nhiều tín năng khác</p>
             </div>
             <br />
-            <button class="welcome-hero-btn explore1" style="margin-right:20px;margin-left:270px;" onclick="window.location.href='#'">
+            <button class="welcome-hero-btn explore1" style="margin-right:20px;margin-left:370px;" onclick="window.location.href='@Url.Action("Register","Account",null)'">
                 Tạo tài khoản
             </button>
-            <button class="welcome-hero-btn explore1" style="margin-right:20px;margin-left:20px" onclick="window.location.href='#'">
+            <button class="welcome-hero-btn explore1" style="margin-right:20px;margin-left:20px" onclick="window.location.href='@Url.Action("Login","Account",null)'">
                 Đăng nhập
-            </button>
-            <button class="welcome-hero-btn explore1" style="margin-left:20px;margin-right:100px;" onclick="window.location.href='Index'">
-                Khám phá
             </button>
         </div>
         <div>
@@ -392,9 +389,9 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="single-ststistics-box">
                         <div class="statistics-content">
-                            <div class="counter">50</div> <span>+</span>
+                            <div class="counter">10</div> <span>+</span>
                         </div><!--/.statistics-content-->
-                        <h3>khách hàng vui vẻ</h3>
+                        <h3>Nhân viên</h3>
                     </div><!--/.single-ststistics-box-->
                 </div><!--/.col-->
             </div><!--/.statistics-counter-->

@@ -76,10 +76,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class=" scroll active"><a href="/Home/Homepage">home</a></li>
-                        <li class="scroll"><a href="~/Home/Homepage">tìm hiểu</a></li>
-                        <li class="scroll"><a href="/images/Index">khám phá</a></li>
-                        <li><button class="welcome-hero-btn box-header" onclick="window.location.href='Form'">Đăng tin</button></li>
+                        <li class=""><a href="@Url.Action("Homepage","Home",null)">home</a></li>
+                        <li class=""><a href="@Url.Action("Index","properties",null)">Khám Phá</a></li>
+                        <li><button class="welcome-hero-btn box-header">@Html.ActionLink("Đăng bài","Create","properties")</button></li>
                     </ul><!--/.nav -->
                 </div><!-- /.navbar-collapse -->
             </div><!--/.container-->

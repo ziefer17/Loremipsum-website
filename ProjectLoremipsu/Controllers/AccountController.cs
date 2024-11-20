@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ProjectLoremipsu.Models;
+using System.Web.Security;
+using System.Web.Routing;
 
 namespace ProjectLoremipsu.Controllers
 {
@@ -51,8 +53,8 @@ namespace ProjectLoremipsu.Controllers
                 _userManager = value;
             }
         }
-        [AllowAnonymous]
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
@@ -62,17 +64,20 @@ namespace ProjectLoremipsu.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel l)
+        public ActionResult Login(user Users)
         {
-            var query = NT.users.SingleOrDefault(m => m.email == l.Email && m.password == l.Password);
-            if (query != null)
+
+            var obj = NT.users.Where(a => a.email.Equals(Users.email)).FirstOrDefault();
+            if (obj != null)
             {
-                Response.Write("<script>alert('Login Successful')<script>");
-                return RedirectToAction("HomePage", "Home");
+                Session["UserID"] = obj.user_id.ToString();
+                Session["UserName"] = obj.name.ToString();
+                Session["UserRole"] = obj.role.ToString();
+                Session["UserEmail"] = obj.email.ToString();
+                return RedirectToAction("Profile", "UserArea");
             }
-            else
-                Response.Write("<script>alert('Invalid Credentials')<script>");
-            return View();
+
+            return View(Users);                        
         }
 
         //
@@ -133,13 +138,14 @@ namespace ProjectLoremipsu.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 ur.user_id = new Random().Next();
                 ur.created_date = DateTime.Now;
                 ur.role = "User";
-                    NT.users.Add(ur);
-                if (NT.users.Any(x => x.email == ur.email))
+                NT.users.Add(ur);
+                if (NT.users.Any(x => x.email == ur.email)) //kinda work?
                 {
-                    ViewBag.Message = "Email already registered";
+                    ViewBag.Message = "Email already registered";   //doesn't show anything
                     return RedirectToAction("Login", "Account");
                 }
                 else
@@ -373,7 +379,7 @@ namespace ProjectLoremipsu.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
 

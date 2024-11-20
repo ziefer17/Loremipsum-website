@@ -1,0 +1,123 @@
+CREATE TABLE users
+(
+  user_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  name NVARCHAR(MAX) NOT NULL,
+  email NVARCHAR(MAX),
+  phone NVARCHAR(MAX),
+  created_date DATE,
+  password NVARCHAR(MAX) NOT NULL,
+  role NVARCHAR(MAX),
+);
+
+CREATE TABLE admin
+(
+  name NVARCHAR(MAX) ,
+  admin_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  password NVARCHAR(MAX) NOT NULL,
+  role NVARCHAR(MAX),
+);
+
+CREATE TABLE property_status
+(
+  status_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  description NVARCHAR(MAX),
+);
+
+CREATE TABLE property_type
+(
+  type_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  description NVARCHAR(MAX),
+);
+
+CREATE TABLE listing_type
+(
+  listing_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  description NVARCHAR(MAX),
+);
+
+CREATE TABLE feature
+(
+  feature_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  feature_name NVARCHAR(MAX),
+);
+
+CREATE TABLE employee
+(
+  employee_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  name NVARCHAR(MAX),
+  phone NVARCHAR(MAX),
+  email NVARCHAR(MAX),
+);
+CREATE TABLE property_location
+(
+location_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+description NVARCHAR(MAX),
+);
+
+
+
+CREATE TABLE property
+(
+  property_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  description TEXT,
+  created_date DATE,
+  address NVARCHAR(MAX),
+  property_size INT,
+  num_bedrooms INT,
+  num_bathrooms INT,
+  num_carspaces INT,
+  price INT,
+  user_id INT,
+  status_id INT,
+  type_id INT,
+  listing_id INT,
+  location_id INT,
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  FOREIGN KEY (status_id) REFERENCES property_status(status_id),
+  FOREIGN KEY (type_id) REFERENCES property_type(type_id),
+  FOREIGN KEY (location_id) REFERENCES property_location(location_id),
+  FOREIGN KEY (listing_id) REFERENCES listing_type(listing_id)
+);
+
+CREATE TABLE image
+(
+  img_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  img1 NVARCHAR (MAX),
+  img2 NVARCHAR (MAX),
+  img3 NVARCHAR (MAX),
+  img4 NVARCHAR (MAX),
+  property_id INT,
+  FOREIGN KEY (property_id) REFERENCES property(property_id) 
+);
+
+CREATE TABLE review
+(
+  review_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  description TEXT,
+  score INT,
+  created_date DATE,
+  property_id INT,
+  user_id INT,
+  FOREIGN KEY (property_id) REFERENCES Property(property_id),
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
+
+CREATE TABLE property_employee
+(
+  idPE int IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  property_id INT NOT NULL,
+  employee_id INT NOT NULL,
+  FOREIGN KEY (property_id) REFERENCES Property(property_id),
+  FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
+);
+
+CREATE TABLE property_feature
+(
+  idPF int IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  property_id INT NOT NULL,
+  feature_id INT NOT NULL,
+  FOREIGN KEY (property_id) REFERENCES Property(property_id),
+  FOREIGN KEY (feature_id) REFERENCES feature(feature_id)
+);

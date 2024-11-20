@@ -1,141 +1,46 @@
-﻿@model IEnumerable<ProjectLoremipsu.Models.property>
+﻿@model PagedList.IPagedList<ProjectLoremipsu.Models.property>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
 @foreach (var item in Model)
-    {
-        <div class="columns">
-            <div class="item">
-                <div>
-                    @foreach (var image in item.images)
-                    {
-                        <img src="@Url.Content(image.img1)" alt="Image of @item.address" class="fm-img" />
-                    }
-                </div>
-                <div class="listing-inner define_float">
-                    <h2>@Html.DisplayFor(modelItem => item.address)</h2>
-                    <span>@Html.DisplayFor(mdoelItem => item.property_location.description)</span>
-
-                    <ul>
-                        <li>@Html.DisplayFor(modelItem => item.num_bedrooms) <i class="fa fa-fw fa-bed"></i></li>
-                        <li>@Html.DisplayFor(modelItem => item.num_bathrooms) <i class="fa fa-fw fa-bath"></i></li>
-                        <li>@Html.DisplayFor(modelItem => item.num_carspaces) Chỗ để xe</li>
-                    </ul>
-                    <p class="price">@Html.DisplayFor(modelItem => item.price)</p>
-                    <p class="btn btn-default">@Html.ActionLink("Chi tiết", "Details", "properties", new { id = item.property_id }, null)</p>
-                </div>
-            </div>
-        </div>
-    }
-
-@*<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.created_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.property_size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.num_bedrooms)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.num_bathrooms)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.num_carspaces)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.listing_type.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.property_location.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.property_status.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.property_type.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.user.name)
-        </th>
-        <th>
-            image
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.created_date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.property_size)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.num_bedrooms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.num_bathrooms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.num_carspaces)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.listing_type.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.property_location.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.property_status.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.property_type.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.user.name)
-            </td>
-            <td>
+{
+    <div class="columns">
+        <div class="item">
+            <div>
                 @foreach (var image in item.images)
                 {
-                    <img src="@Url.Content(image.img1)" alt="Image of @item.address" style="width:200px;height:auto;" />
+                    <img src="@Url.Content(image.img1)" alt="Image of @item.address" class="fm-img" />
                 }
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.property_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.property_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.property_id })
-            </td>
-        </tr>
-    }
+            </div>
+            <div class="listing-inner define_float">
+                <h2>@Html.DisplayFor(modelItem => item.address)</h2>
+                <span>@Html.DisplayFor(mdoelItem => item.property_location.description)</span>
+                <span style="color: #272343;">@Html.DisplayFor(modelItem => item.property_type.description)</span>
 
-</table>*@
+                <ul>
+                    <li>@Html.DisplayFor(modelItem => item.num_bedrooms) <i class="fa fa-fw fa-bed"></i></li>
+                    <li>@Html.DisplayFor(modelItem => item.num_bathrooms) <i class="fa fa-fw fa-bath"></i></li>
+                    <li>@Html.DisplayFor(modelItem => item.num_carspaces) <i class="fa fas fa-car" style="margin-right:10px;"></i></li>
+                </ul>
+                <p class="price">@Html.DisplayFor(modelItem => item.price)</p>
+                <p class="btn btn-default">@Html.ActionLink("Chi tiết", "Details", "properties", new { id = item.property_id }, null)</p>
+            </div>
+        </div>
+    </div>
+}
+<p></p>
+<p></p>
+<br />
+<div class="container">
+    <div class="pagination" style="margin:auto;">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page }))
+    </div>
+</div>
+
+

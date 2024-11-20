@@ -1,22 +1,32 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+@if (Session["Username"] != null)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    if (Session["Username"].ToString() == "Admins")
     {
-    @Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        <li class="nav-item" style="text-decoration: none; margin-top: 10px;">
+            <a href="~/Admin/HomeAdmin/Index" class="icon-nav" style="margin-top:10px; font-size:17px;">Admin</a>
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        <li class="nav-item" style="text-decoration: none; margin-top: 10px; margin-left: 20px;">
+            <a href="@Url.Action("Logout","Account")" class="icon-nav" style="font-size: 17px; margin-top: 10px;">Đăng xuất</a>
+        </li>
     }
+    else
+    {
+        <li class="nav-item" style="text-decoration: none; margin-top: 10px;">
+            <a href="@Url.Action("Index","Cart")" class="icon-nav" style="margin-top:10px;"><i class="fas fa-cart-shopping"></i></a>
+        </li>
+        <li class="nav-item" style="text-decoration: none; margin-top: 10px; margin-left: 20px;">
+            <a href="@Url.Action("Logout","Account")" class="icon-nav" style="font-size: 17px; margin-top: 10px;">Đăng xuất</a>
+        </li>
+    }
+
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <li class="nav-item" style="text-decoration: none; margin-top: 10px;">
+        <a href="@Url.Action("Register","Account")" class="icon-nav" style="font-size:17px;">Đăng ký</a>
+    </li>
+    <li class="nav-item" style="text-decoration: none; margin-top: 10px; margin-left:20px;">
+        <a href="@Url.Action("Login","Account")" class="icon-nav" style="font-size:17px;">Đăng nhập</a>
+    </li>
 }

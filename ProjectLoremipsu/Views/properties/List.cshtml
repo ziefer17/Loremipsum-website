@@ -1,0 +1,92 @@
+﻿@model PagedList.IPagedList<ProjectLoremipsu.Models.property>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>List</h2>
+<table class="table">
+    <tr>
+        <th>
+            Ngày tạo
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Giá tiền
+        </th>
+        <th>
+            Thuê/Bán
+        </th>
+        <th>
+            Khu vực
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Loại BDS
+        </th>
+        <th>
+            Người đăng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.property_size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.num_bedrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.num_bathrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.num_carspaces)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.listing_type.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.property_location.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.property_status.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.property_type.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.name)
+            </td>
+            <td>
+                @Html.ActionLink("Chi tiết", "Details", "properties", new { id = item.property_id }, null) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.property_id })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="container">
+    <div class="pagination" style="margin:auto;">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("List",
+            new { page }))
+    </div>
+</div>
